@@ -3,21 +3,11 @@
 #### 介绍
 开发者开源协同，基于腾讯物联网操作系统TencentOS Tiny共建的生态项目仓
 
-#### 软件架构
-软件架构说明
-
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+- 1、TencentOS tiny Hazardous gas detector
+
+   基于TencentOS tiny危险气体探测仪项目
 
 #### 参与贡献
 
