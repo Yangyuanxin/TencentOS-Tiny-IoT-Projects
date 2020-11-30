@@ -17,8 +17,6 @@ typedef struct
 	float gas_density ;	//ppm
 	/*ÂúÁ¿³Ì*/
 	float full_range ;		
-	float max ;
-	float min ;
 }Dart_Sensor ;
 
 

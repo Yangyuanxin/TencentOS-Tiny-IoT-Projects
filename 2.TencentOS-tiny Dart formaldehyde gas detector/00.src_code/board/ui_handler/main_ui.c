@@ -411,8 +411,8 @@ void update_main_page_data_display(void)
     display_hcho_value(sensor.gas_density, GREEN, 1);
     display_work_status(sensor.gas_density, 1);
     display_hcho_unit(1);
-    display_hcho_max_value(sensor.max, GREEN, 1);
-    display_hcho_min_value(sensor.min, GREEN, 1);
+    display_hcho_max_value(Formaldehyde_Sensor_interface.Formaldehyde_Max_Value, GREEN, 1);
+    display_hcho_min_value(Formaldehyde_Sensor_interface.Formaldehyde_Min_Value, GREEN, 1);
     display_runing_time_font(1);
     display_runing_time(DateTime_Handler_Info.hour, DateTime_Handler_Info.minute, DateTime_Handler_Info.sec, 1);
 }

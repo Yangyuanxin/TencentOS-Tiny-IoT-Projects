@@ -11,6 +11,7 @@
 #include "bsp_bmp.h"
 #include "stm32l4xx_it.h"
 
+#define NETWORK_FUNC 0
 
 FATFS fs;						  /* FatFs文件系统对象 */
 FRESULT f_res;                    /* 文件操作结果 */
@@ -117,8 +118,7 @@ int $Sub$$main(void)
     Load_Config_ini_File();
     lcd_model.lcd_driver->Lcd_show_bmp(boot_logo_para);
     lcd_model.lcd_driver->lcd_display_onoff(1);
-		HAL_Delay(1500);
-    Sensor_Register(&mq2_sensor_interface);
+    HAL_Delay(1500);
     lcd_model.lcd_driver->lcd_clear(BLACK);
     Menu_Init();
     //关指示灯
@@ -146,104 +146,39 @@ void default_task(void *pdata)
     tos_knl_sched_lock();
     /*创建队列，用于接收传感器数据*/
     tos_msg_q_create(&sensor_data_msg, sensor_msg_pool, SENSOR_U3_BUFFER_SIZE);
-		tos_msg_q_create(&recv_data_msg, recv_msg_pool, CMD_STR_SIZE);
+    tos_msg_q_create(&recv_data_msg, recv_msg_pool, CMD_STR_SIZE);
     /*创建按键任务*/
     osThreadCreate(osThread(StartKeyTask), NULL);
     /*创建状态栏任务*/
     osThreadCreate(osThread(StartStatus_Bar_Task), NULL);
+		#if defined NETWORK_FUNC == 1
     /*创建数据上传任务*/
-    //osThreadCreate(osThread(StartNetWorkTask), NULL);
+    osThreadCreate(osThread(StartNetWorkTask), NULL);
+		#endif
     /*创建传感器数据任务*/
     osThreadCreate(osThread(StartSensor_Task), NULL);
-		/*创建串口接收任务*/
+    /*创建串口接收任务*/
     osThreadCreate(osThread(StartUartRecvTask), NULL);
     tos_knl_sched_unlock();
 }
 
 
 /*传感器任务处理*/
-Dart_Sensor sensor ;
-
-/*找到数组最大*/
-float find_max_value(const float *pData, uint32_t size)
-{
-    uint32_t i = 0;
-    float value = 0;
-
-    for(i = 0; i < size; i++)
-    {
-        if(pData[i] > value)
-        {
-            value = pData[i];
-        }
-    }
-
-    return value;
-}
-
-/*找到数组最小*/
-float find_min_value (const float *pData, uint32_t size)
-{
-    uint32_t i = 0;
-    float value = pData[0];
-
-    for(i = 0; i < size; i++)
-    {
-        if(pData[i] < value)
-        {
-            value = pData[i];
-        }
-    }
-
-    return value;
-}
-
 void StartSensor_Task(void  *argument)
 {
-    k_err_t err;
-    uint8_t i = 0 ;
-    void *msg_received;
-    float max = 0.00, min = 0.00;
-    uint8_t sensor_recv_buf[SENSOR_U3_BUFFER_SIZE] = {0};
-    MX_DMA_Init();
-    MX_USART3_UART_Init();
-    //开启DMA接收
-    HAL_UART_DMAStop(&huart3);
-    memset(dart_sensor_handler.SensorU3Buffer, 0, SENSOR_U3_BUFFER_SIZE);
-    HAL_UART_Receive_DMA(&huart3, (uint8_t*)dart_sensor_handler.SensorU3Buffer, SENSOR_U3_BUFFER_SIZE);
-    for(int i = 0 ; i < DATA_SIZE ; i++)
-        plot_handler.rel_data_data[i] = 0 ;
+		/*传感器注册*/
+    Sensor_Register(&Formaldehyde_Sensor_interface);
     while(1)
     {
-        err = tos_msg_q_pend(&sensor_data_msg, &msg_received, TOS_TIME_FOREVER);
-        if (err == K_ERR_NONE)
+				/*获取传感器数据*/
+        Formaldehyde_Sensor_interface.get_Formaldehyde_Value(&Formaldehyde_Sensor_interface);
+				/*处理传感器数据展示*/
+        if(MAIN_PAGE == Flow_Cursor.flow_cursor)
         {
-            memcpy(sensor_recv_buf, msg_received, SENSOR_U3_BUFFER_SIZE);
-
-            /*判断包头数据是否正确*/
-            if(sensor_recv_buf[0] == 0xFF && sensor_recv_buf[1] == 0x17)
-            {
-                sensor = Get_Dart_Sensor_Density(sensor_recv_buf);
-
-                /*更新数据到队列*/
-                for(i = 0 ; i <= DATA_SIZE - 2 ; i++)
-                    plot_handler.rel_data_data[i] = plot_handler.rel_data_data[i + 1];
-
-                plot_handler.rel_data_data[DATA_SIZE - 1] = sensor.gas_density ;
-                max = find_max_value(plot_handler.rel_data_data, DATA_SIZE);
-                min = find_min_value(plot_handler.rel_data_data, DATA_SIZE);
-								sensor.max = max ;
-								sensor.min = min ;
-                if(MAIN_PAGE == Flow_Cursor.flow_cursor)
-                {
-										display_work_status(sensor.gas_density,1);
-                    display_hcho_value(sensor.gas_density, GREEN, 1);
-                    display_hcho_max_value(max, GREEN, 1);
-                    display_hcho_min_value(min, GREEN, 1);
-                }
-            }
-            memset(dart_sensor_handler.SensorU3Buffer, 0, SENSOR_U3_BUFFER_SIZE);
-            HAL_UART_Receive_DMA(&huart3, (uint8_t*)dart_sensor_handler.SensorU3Buffer, SENSOR_U3_BUFFER_SIZE);
+            display_work_status(Formaldehyde_Sensor_interface.Formaldehyde_Value, 1);
+            display_hcho_value(Formaldehyde_Sensor_interface.Formaldehyde_Value, GREEN, 1);
+            display_hcho_max_value(Formaldehyde_Sensor_interface.Formaldehyde_Max_Value, GREEN, 1);
+            display_hcho_min_value(Formaldehyde_Sensor_interface.Formaldehyde_Min_Value, GREEN, 1);
         }
     }
 }
@@ -275,6 +210,7 @@ void StartStatus_Bar_Task(void *argument)
     LCD_Fill_Para status_bar_fill_para = {0, 240, 0, 27, WHITE} ;
     lcd_model.lcd_driver->lcd_fill(status_bar_fill_para);
     display_runing_time_font(1);
+
     while(1)
     {
         Get_Date_Time();
@@ -284,15 +220,18 @@ void StartStatus_Bar_Task(void *argument)
             sprintf(DateTime_Handler_Info.DisPlay_DateBuf, "%02d:%02d:%02d", \
                     DateTime_Handler_Info.hour, DateTime_Handler_Info.minute, DateTime_Handler_Info.sec);
             lcd_model.lcd_driver->lcd_show_ascii_str(datatime_display_para);
-						if(MAIN_PAGE == Flow_Cursor.flow_cursor)
-							display_runing_time(DateTime_Handler_Info.hour, DateTime_Handler_Info.minute, DateTime_Handler_Info.sec,1);
+
+            if(MAIN_PAGE == Flow_Cursor.flow_cursor)
+                display_runing_time(DateTime_Handler_Info.hour, DateTime_Handler_Info.minute, DateTime_Handler_Info.sec, 1);
         }
+
         tos_sleep_ms(1000);
     }
 }
 
 
 /*网络数据上传任务*/
+#if defined NETWORK_FUNC == 1
 #define RECV_LEN 1024
 uint8_t recv_data[RECV_LEN];
 char buf[512] = {0};
@@ -312,16 +251,9 @@ void OneNet_Packet_Send(int fd, const char *device_id, const char *api_key, int 
 
 void OneNet_SendData(int fd)
 {
-    #if 0
-
     /*如果打开了数据上传按钮，如果检测到危险时，则开启上传模式*/
-    if(1 == User_Memory_Para.upload_flag && 1 == Sensor_Flow_Cursor.Is_safety_or_danger)
-    {
-        Sensor_Flow_Cursor.Is_safety_or_danger = 0 ;
-        OneNet_Packet_Send(fd, ONENET_DEVICE_ID, ONENET_API_KEY, Sensor_Flow_Cursor.Alarm_Threshold);
-    }
-
-    #endif
+    if(1 == User_Memory_Para.upload_flag)
+        OneNet_Packet_Send(fd, ONENET_DEVICE_ID, ONENET_API_KEY, Formaldehyde_Sensor_interface.Formaldehyde_Value);
 }
 
 void StartNetWorkTask(void *argument)
@@ -405,32 +337,33 @@ void StartNetWorkTask(void *argument)
         close(fd);
     }
 }
+#endif
 
 /*串口命令接收处理*/
 void led_on_process(void)
 {
-	HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_SET);
 }
 
 void led_off_process(void)
 {
-	HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, GPIO_PIN_RESET);
 }
 
 void get_sensor_data(void)
 {
-	printf("传感器数据:%.3fppm\n",sensor.gas_density);
+    printf("传感器数据:%.3fppm\n",Formaldehyde_Sensor_interface.Formaldehyde_Value);
 }
 
 void get_system_version(void)
 {
-	printf("当前系统版本:%s %s\n",__DATE__,__TIME__);
+    printf("当前系统版本:%s %s\n", __DATE__, __TIME__);
 }
 
 void cpu_reset_process(void)
 {
-	printf("系统重启\n");
-	NVIC_SystemReset();
+    printf("系统重启\n");
+    NVIC_SystemReset();
 }
 
 /*注册命令*/
@@ -441,23 +374,25 @@ REGISTER_CMD(get_sensor_data, get_sensor_data);
 REGISTER_CMD(get_system_version, get_system_version);
 void StartUartRecvTask(void  *argument)
 {
-		k_err_t err;
-		void *msg_received;
-		uint8_t uart_recv_buf[CMD_STR_SIZE] = {0};
-		/*命令初始化*/
+    k_err_t err;
+    void *msg_received;
+    uint8_t uart_recv_buf[CMD_STR_SIZE] = {0};
+    /*命令初始化*/
     cmd_init();
     HAL_UART_Receive_IT(&huart1, (uint8_t *)&cmd_parse_typedef.Res, 1);
-		printf("串口接收命令任务启动\n");
-		while(1)
-		{
-				err = tos_msg_q_pend(&recv_data_msg, &msg_received, TOS_TIME_FOREVER);
+    printf("串口接收命令任务启动\n");
+
+    while(1)
+    {
+        err = tos_msg_q_pend(&recv_data_msg, &msg_received, TOS_TIME_FOREVER);
+
         if (err == K_ERR_NONE)
         {
-					memcpy(uart_recv_buf,msg_received,CMD_STR_SIZE);
-					printf("接收到指令:%s\n", uart_recv_buf);
-					cmd_parsing((char *)uart_recv_buf);
-          memset(&cmd_parse_typedef, 0, sizeof(cmd_parse_typedef));
-				}
-		}
+            memcpy(uart_recv_buf, msg_received, CMD_STR_SIZE);
+            printf("接收到指令:%s\n", uart_recv_buf);
+            cmd_parsing((char *)uart_recv_buf);
+            memset(&cmd_parse_typedef, 0, sizeof(cmd_parse_typedef));
+        }
+    }
 }
 

@@ -141,7 +141,7 @@ static void LCD_GPIO_Init(void)
     /* 复位LCD */
     LCD_PWR(0);
     LCD_RST(0);
-    HAL_Delay(100);
+    HAL_Delay(15);
     LCD_RST(1);
 
     /* 初始化SPI2接口 */

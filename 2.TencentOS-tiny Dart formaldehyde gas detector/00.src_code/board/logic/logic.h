@@ -4,26 +4,21 @@
 
 typedef struct Sensor
 {
-    /*烟感值*/
-    int Smoke_Value;
-    /*报警灯状态*/
-    uint8_t Alarm_Led_Status : 1;
-    /*报警蜂鸣器状态*/
-    uint8_t Alarm_Buzzer_Status : 1;
-
-    void (*led_control)(struct Sensor *sensor_handle, uint8_t status);
-    void (*buzzer_control)(struct Sensor *sensor_handle, uint8_t status);
-
-    void (*get_smoke_value)(struct Sensor *sensor_handle);
-    int (*get_led_status)(struct Sensor *sensor_handle);
-    int (*get_buzzer_status)(struct Sensor *sensor_handle);
+    /*甲醛值*/
+    float Formaldehyde_Value;
+		float Formaldehyde_Max_Value;
+		float Formaldehyde_Min_Value;
+    void (*get_Formaldehyde_Value)(struct Sensor *sensor_handle);
 } Sensor ;
-extern Sensor *MQ2_Sensor ;
-extern Sensor mq2_sensor_interface ;
+extern Sensor *Formaldehyde_Sensor ;
+extern Sensor Formaldehyde_Sensor_interface ;
 /*注册传感器*/
 int Sensor_Register(Sensor *sensor_handle);
 
-
+/*找到数组最大*/
+float find_max_value(const float *pData, uint32_t size);
+/*找到数组最小*/
+float find_min_value (const float *pData, uint32_t size);
 
 #endif //__LOGIC_H
 
