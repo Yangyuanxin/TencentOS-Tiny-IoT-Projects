@@ -1,0 +1,58 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "start",
+			"type": "shell",
+			"command": "openocd",
+			"args": [
+				"-f",
+				"interface/stlink.cfg",
+				"-f",
+				"target/stm32l4x.cfg",
+				"-c",
+				"program build/tos_js.elf verify reset exit"
+			],
+			"isBackground": true,
+			"problemMatcher": {
+				"pattern": {
+					"regexp": ""
+				},
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "^",
+					"endsPattern": "Nothing to be done for|arm-none-eabi-objcopy"
+				}
+			}
+		},
+		{
+			"label": "stop",
+			"command": "echo ${input:terminate}",
+			"type": "shell"
+		},
+		{
+			"label": "build",
+			"command": "make -j all",
+			"type": "shell",
+			"isBackground": true,
+			"problemMatcher": {
+				"pattern": {
+					"regexp": ""
+				},
+				"background": {
+					"activeOnStart": true,
+					"beginsPattern": "^",
+					"endsPattern": "Nothing to be done for|arm-none-eabi-objcopy"
+				}
+			}
+		}
+	],
+	"inputs": [
+		{
+			"id": "terminate",
+			"type": "command",
+			"command": "workbench.action.tasks.terminate",
+			"args": "terminateAll"
+		}
+	]
+}
