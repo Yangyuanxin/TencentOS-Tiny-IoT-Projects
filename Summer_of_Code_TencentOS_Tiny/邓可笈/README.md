@@ -82,7 +82,7 @@ uboot烧录操作如下：
 
 **测试结果**
 
-![mnist_test](/pic/mnist_test.png)
+![mnist_test](./pic/mnist_test.png)
 
 **2.移植一个可以在cortex-A上加速推理的库**（已完成ACL库的制作，但用makefile和OS链接还存在问题）
 
@@ -180,7 +180,7 @@ ARM-NN是一个知名的cortex-A的SDK，应用在很多安卓手机上，但与
 
 6.显示仍然碎花屏（通过5定位出是buffer数据的问题，还在努力解决，准备挑一帧的buffer单独拿出来呈像看看）
 
-​	<img src="/pic/lcd.png" style="zoom:25%;" />
+​	<img src="./pic/lcd.png" style="zoom:25%;" />
 
 
 
