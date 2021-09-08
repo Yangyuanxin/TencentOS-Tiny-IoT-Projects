@@ -107,5 +107,5 @@ tos_meet_rust_daemo函数就是写好的简单的任务切换函数，该函数�
 
 ### 内核API封装和测试情况
 
-封装和测试情况由于统计结果比较多，可以查看[test case](./test case.md)文件。
+封装和测试情况由于统计结果比较多，可以查看[test_case.md](./test_case.md)文件。
 
