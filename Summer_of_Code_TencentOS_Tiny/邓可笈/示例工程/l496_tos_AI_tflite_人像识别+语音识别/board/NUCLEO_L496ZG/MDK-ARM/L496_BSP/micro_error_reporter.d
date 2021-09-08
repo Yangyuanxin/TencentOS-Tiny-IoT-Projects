@@ -1,0 +1,9 @@
+l496_bsp/micro_error_reporter.o: \
+  tensorflow\lite\micro\micro_error_reporter.cc \
+  tensorflow\lite\micro\micro_error_reporter.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\cstdarg \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\__config \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  tensorflow\lite\core\api\error_reporter.h \
+  tensorflow\lite\micro\compatibility.h \
+  tensorflow\lite\micro\debug_log.h tensorflow\lite\micro\micro_string.h
