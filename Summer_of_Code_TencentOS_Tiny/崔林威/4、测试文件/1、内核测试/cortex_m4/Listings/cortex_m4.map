@@ -1,0 +1,2140 @@
+Component: ARM Compiler 5.06 update 6 (build 750) Tool: armlink [4d35ed]
+
+==============================================================================
+
+Section Cross References
+
+    startup_armcm4.o(RESET) refers to startup_armcm4.o(STACK) for __initial_sp
+    startup_armcm4.o(RESET) refers to startup_armcm4.o(.text) for Reset_Handler
+    startup_armcm4.o(RESET) refers to port_s.o(.text) for PendSV_Handler
+    startup_armcm4.o(.text) refers to system_armcm4.o(i.SystemInit) for SystemInit
+    startup_armcm4.o(.text) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    system_armcm4.o(i.SystemCoreClockUpdate) refers to system_armcm4.o(.data) for SystemCoreClock
+    system_armcm4.o(i.SystemInit) refers to startup_armcm4.o(RESET) for __Vectors
+    system_armcm4.o(i.SystemInit) refers to system_armcm4.o(.data) for SystemCoreClock
+    tos_cpu.o(i.cpu_context_switch) refers to port_s.o(.text) for port_context_switch
+    tos_cpu.o(i.cpu_init) refers to uldiv.o(.text) for __aeabi_uldivmod
+    tos_cpu.o(i.cpu_init) refers to tos_cpu.o(i.cpu_systick_init) for cpu_systick_init
+    tos_cpu.o(i.cpu_init) refers to tos_global.o(.data) for k_cpu_tick_per_second
+    tos_cpu.o(i.cpu_irq_context_switch) refers to port_s.o(.text) for port_irq_context_switch
+    tos_cpu.o(i.cpu_reset) refers to port_c.o(i.port_cpu_reset) for port_cpu_reset
+    tos_cpu.o(i.cpu_sched_start) refers to port_s.o(.text) for port_sched_start
+    tos_cpu.o(i.cpu_systick_init) refers to port_c.o(i.port_systick_priority_set) for port_systick_priority_set
+    tos_cpu.o(i.cpu_systick_init) refers to port_c.o(i.port_systick_config) for port_systick_config
+    tos_cpu.o(i.tos_cpu_clz) refers to port_s.o(.text) for port_clz
+    tos_cpu.o(i.tos_cpu_cpsr_restore) refers to port_s.o(.text) for port_cpsr_restore
+    tos_cpu.o(i.tos_cpu_cpsr_save) refers to port_s.o(.text) for port_cpsr_save
+    tos_cpu.o(i.tos_cpu_int_disable) refers to port_s.o(.text) for port_int_disable
+    tos_cpu.o(i.tos_cpu_int_enable) refers to port_s.o(.text) for port_int_enable
+    port_c.o(i.port_systick_config) refers to port_c.o(i.__NVIC_SetPriority) for __NVIC_SetPriority
+    port_c.o(i.port_systick_priority_set) refers to port_c.o(i.__NVIC_SetPriority) for __NVIC_SetPriority
+    port_s.o(.text) refers to tos_global.o(.data) for k_curr_task
+    tos_binary_heap.o(i.bin_heap_do_percolate_up) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_binary_heap.o(i.bin_heap_percolate_down) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_binary_heap.o(i.bin_heap_percolate_down) refers to tos_binary_heap.o(i.bin_heap_do_percolate_up) for bin_heap_do_percolate_up
+    tos_binary_heap.o(i.bin_heap_percolate_up) refers to tos_binary_heap.o(i.bin_heap_do_percolate_up) for bin_heap_do_percolate_up
+    tos_binary_heap.o(i.tos_bin_heap_create) refers to tos_binary_heap.o(i.knl_object_init) for knl_object_init
+    tos_binary_heap.o(i.tos_bin_heap_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_binary_heap.o(i.tos_bin_heap_create_dyn) refers to tos_binary_heap.o(i.knl_object_init) for knl_object_init
+    tos_binary_heap.o(i.tos_bin_heap_destroy) refers to tos_binary_heap.o(i.knl_object_verify) for knl_object_verify
+    tos_binary_heap.o(i.tos_bin_heap_destroy_dyn) refers to tos_binary_heap.o(i.knl_object_verify) for knl_object_verify
+    tos_binary_heap.o(i.tos_bin_heap_destroy_dyn) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_binary_heap.o(i.tos_bin_heap_flush) refers to tos_binary_heap.o(i.knl_object_verify) for knl_object_verify
+    tos_binary_heap.o(i.tos_bin_heap_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_binary_heap.o(i.tos_bin_heap_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_binary_heap.o(i.tos_bin_heap_is_empty) refers to tos_binary_heap.o(i.knl_object_verify) for knl_object_verify
+    tos_binary_heap.o(i.tos_bin_heap_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_binary_heap.o(i.tos_bin_heap_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_binary_heap.o(i.tos_bin_heap_is_full) refers to tos_binary_heap.o(i.knl_object_verify) for knl_object_verify
+    tos_binary_heap.o(i.tos_bin_heap_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_binary_heap.o(i.tos_bin_heap_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_binary_heap.o(i.tos_bin_heap_pop) refers to tos_binary_heap.o(i.knl_object_verify) for knl_object_verify
+    tos_binary_heap.o(i.tos_bin_heap_pop) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_binary_heap.o(i.tos_bin_heap_pop) refers to tos_binary_heap.o(i.tos_bin_heap_is_empty) for tos_bin_heap_is_empty
+    tos_binary_heap.o(i.tos_bin_heap_pop) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_binary_heap.o(i.tos_bin_heap_pop) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_binary_heap.o(i.tos_bin_heap_pop) refers to tos_binary_heap.o(i.bin_heap_percolate_down) for bin_heap_percolate_down
+    tos_binary_heap.o(i.tos_bin_heap_push) refers to tos_binary_heap.o(i.knl_object_verify) for knl_object_verify
+    tos_binary_heap.o(i.tos_bin_heap_push) refers to tos_binary_heap.o(i.tos_bin_heap_is_full) for tos_bin_heap_is_full
+    tos_binary_heap.o(i.tos_bin_heap_push) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_binary_heap.o(i.tos_bin_heap_push) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_binary_heap.o(i.tos_bin_heap_push) refers to tos_binary_heap.o(i.bin_heap_percolate_up) for bin_heap_percolate_up
+    tos_binary_heap.o(i.tos_bin_heap_push) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_bitmap.o(i.tos_bitmap_create_empty) refers to tos_bitmap.o(i.knl_object_init) for knl_object_init
+    tos_bitmap.o(i.tos_bitmap_create_full) refers to tos_bitmap.o(i.knl_object_init) for knl_object_init
+    tos_bitmap.o(i.tos_bitmap_destroy) refers to tos_bitmap.o(i.knl_object_verify) for knl_object_verify
+    tos_bitmap.o(i.tos_bitmap_is_reset) refers to tos_bitmap.o(i.knl_object_verify) for knl_object_verify
+    tos_bitmap.o(i.tos_bitmap_is_reset) refers to tos_bitmap.o(i.tos_bitmap_is_set) for tos_bitmap_is_set
+    tos_bitmap.o(i.tos_bitmap_is_set) refers to tos_bitmap.o(i.knl_object_verify) for knl_object_verify
+    tos_bitmap.o(i.tos_bitmap_lsb) refers to tos_bitmap.o(i.knl_object_verify) for knl_object_verify
+    tos_bitmap.o(i.tos_bitmap_lsb) refers to tos_cpu.o(i.tos_cpu_clz) for tos_cpu_clz
+    tos_bitmap.o(i.tos_bitmap_reset) refers to tos_bitmap.o(i.knl_object_verify) for knl_object_verify
+    tos_bitmap.o(i.tos_bitmap_set) refers to tos_bitmap.o(i.knl_object_verify) for knl_object_verify
+    tos_char_fifo.o(i.tos_chr_fifo_create) refers to tos_ring_queue.o(i.tos_ring_q_create) for tos_ring_q_create
+    tos_char_fifo.o(i.tos_chr_fifo_create) refers to tos_char_fifo.o(i.knl_object_init) for knl_object_init
+    tos_char_fifo.o(i.tos_chr_fifo_create_dyn) refers to tos_ring_queue.o(i.tos_ring_q_create_dyn) for tos_ring_q_create_dyn
+    tos_char_fifo.o(i.tos_chr_fifo_create_dyn) refers to tos_char_fifo.o(i.knl_object_init) for knl_object_init
+    tos_char_fifo.o(i.tos_chr_fifo_destroy) refers to tos_char_fifo.o(i.knl_object_verify) for knl_object_verify
+    tos_char_fifo.o(i.tos_chr_fifo_destroy) refers to tos_ring_queue.o(i.tos_ring_q_destroy) for tos_ring_q_destroy
+    tos_char_fifo.o(i.tos_chr_fifo_destroy_dyn) refers to tos_char_fifo.o(i.knl_object_verify) for knl_object_verify
+    tos_char_fifo.o(i.tos_chr_fifo_destroy_dyn) refers to tos_ring_queue.o(i.tos_ring_q_destroy_dyn) for tos_ring_q_destroy_dyn
+    tos_char_fifo.o(i.tos_chr_fifo_flush) refers to tos_char_fifo.o(i.knl_object_verify) for knl_object_verify
+    tos_char_fifo.o(i.tos_chr_fifo_flush) refers to tos_ring_queue.o(i.tos_ring_q_flush) for tos_ring_q_flush
+    tos_char_fifo.o(i.tos_chr_fifo_is_empty) refers to tos_char_fifo.o(i.knl_object_verify) for knl_object_verify
+    tos_char_fifo.o(i.tos_chr_fifo_is_empty) refers to tos_ring_queue.o(i.tos_ring_q_is_empty) for tos_ring_q_is_empty
+    tos_char_fifo.o(i.tos_chr_fifo_is_full) refers to tos_char_fifo.o(i.knl_object_verify) for knl_object_verify
+    tos_char_fifo.o(i.tos_chr_fifo_is_full) refers to tos_ring_queue.o(i.tos_ring_q_is_full) for tos_ring_q_is_full
+    tos_char_fifo.o(i.tos_chr_fifo_pop) refers to tos_char_fifo.o(i.knl_object_verify) for knl_object_verify
+    tos_char_fifo.o(i.tos_chr_fifo_pop) refers to tos_ring_queue.o(i.tos_ring_q_dequeue) for tos_ring_q_dequeue
+    tos_char_fifo.o(i.tos_chr_fifo_pop_stream) refers to tos_char_fifo.o(i.knl_object_verify) for knl_object_verify
+    tos_char_fifo.o(i.tos_chr_fifo_pop_stream) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_char_fifo.o(i.tos_chr_fifo_pop_stream) refers to tos_ring_queue.o(i.tos_ring_q_dequeue) for tos_ring_q_dequeue
+    tos_char_fifo.o(i.tos_chr_fifo_pop_stream) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_char_fifo.o(i.tos_chr_fifo_push) refers to tos_char_fifo.o(i.knl_object_verify) for knl_object_verify
+    tos_char_fifo.o(i.tos_chr_fifo_push) refers to tos_ring_queue.o(i.tos_ring_q_enqueue) for tos_ring_q_enqueue
+    tos_char_fifo.o(i.tos_chr_fifo_push_stream) refers to tos_char_fifo.o(i.knl_object_verify) for knl_object_verify
+    tos_char_fifo.o(i.tos_chr_fifo_push_stream) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_char_fifo.o(i.tos_chr_fifo_push_stream) refers to tos_ring_queue.o(i.tos_ring_q_enqueue) for tos_ring_q_enqueue
+    tos_char_fifo.o(i.tos_chr_fifo_push_stream) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_event.o(i.event_do_post) refers to tos_event.o(i.knl_object_verify) for knl_object_verify
+    tos_event.o(i.event_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_event.o(i.event_do_post) refers to tos_event.o(i.event_is_match) for event_is_match
+    tos_event.o(i.event_do_post) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_event.o(i.event_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_event.o(i.event_do_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_event.o(i.tos_event_create) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_event.o(i.tos_event_destroy) refers to tos_event.o(i.knl_object_verify) for knl_object_verify
+    tos_event.o(i.tos_event_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_event.o(i.tos_event_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_event.o(i.tos_event_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_event.o(i.tos_event_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_event.o(i.tos_event_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_event.o(i.tos_event_pend) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_event.o(i.tos_event_pend) refers to tos_event.o(i.knl_object_verify) for knl_object_verify
+    tos_event.o(i.tos_event_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_event.o(i.tos_event_pend) refers to tos_event.o(i.event_is_match) for event_is_match
+    tos_event.o(i.tos_event_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_event.o(i.tos_event_pend) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_event.o(i.tos_event_pend) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_event.o(i.tos_event_pend) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_event.o(i.tos_event_pend) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_event.o(i.tos_event_pend) refers to tos_global.o(.data) for k_curr_task
+    tos_event.o(i.tos_event_post) refers to tos_event.o(i.event_do_post) for event_do_post
+    tos_event.o(i.tos_event_post_keep) refers to tos_event.o(i.event_do_post) for event_do_post
+    tos_global.o(.constdata) refers to tos_global.o(.bss) for k_idle_task_stk
+    tos_mmblk.o(i.tos_mmblk_alloc) refers to tos_mmblk.o(i.knl_object_verify) for knl_object_verify
+    tos_mmblk.o(i.tos_mmblk_alloc) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mmblk.o(i.tos_mmblk_alloc) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mmblk.o(i.tos_mmblk_free) refers to tos_mmblk.o(i.knl_object_verify) for knl_object_verify
+    tos_mmblk.o(i.tos_mmblk_free) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mmblk.o(i.tos_mmblk_free) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mmblk.o(i.tos_mmblk_pool_create) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_mmblk.o(i.tos_mmblk_pool_destroy) refers to tos_mmblk.o(i.knl_object_verify) for knl_object_verify
+    tos_mmheap.o(i.__ffs) refers to tos_mmheap.o(i.generic_fls) for generic_fls
+    tos_mmheap.o(i.__fls) refers to tos_mmheap.o(i.generic_fls) for generic_fls
+    tos_mmheap.o(i.blk_absorb) refers to tos_mmheap.o(i.blk_size) for blk_size
+    tos_mmheap.o(i.blk_absorb) refers to tos_mmheap.o(i.blk_link_next) for blk_link_next
+    tos_mmheap.o(i.blk_can_split) refers to tos_mmheap.o(i.blk_size) for blk_size
+    tos_mmheap.o(i.blk_insert) refers to tos_mmheap.o(i.blk_size) for blk_size
+    tos_mmheap.o(i.blk_insert) refers to tos_mmheap.o(i.mapping_insert) for mapping_insert
+    tos_mmheap.o(i.blk_insert) refers to tos_mmheap.o(i.insert_free_block) for insert_free_block
+    tos_mmheap.o(i.blk_link_next) refers to tos_mmheap.o(i.blk_next) for blk_next
+    tos_mmheap.o(i.blk_locate_free) refers to tos_mmheap.o(i.mapping_search) for mapping_search
+    tos_mmheap.o(i.blk_locate_free) refers to tos_mmheap.o(i.blk_search_suitable) for blk_search_suitable
+    tos_mmheap.o(i.blk_locate_free) refers to tos_mmheap.o(i.remove_free_block) for remove_free_block
+    tos_mmheap.o(i.blk_mark_as_free) refers to tos_mmheap.o(i.blk_link_next) for blk_link_next
+    tos_mmheap.o(i.blk_mark_as_free) refers to tos_mmheap.o(i.blk_set_prev_free) for blk_set_prev_free
+    tos_mmheap.o(i.blk_mark_as_free) refers to tos_mmheap.o(i.blk_set_free) for blk_set_free
+    tos_mmheap.o(i.blk_mark_as_used) refers to tos_mmheap.o(i.blk_next) for blk_next
+    tos_mmheap.o(i.blk_mark_as_used) refers to tos_mmheap.o(i.blk_set_prev_used) for blk_set_prev_used
+    tos_mmheap.o(i.blk_mark_as_used) refers to tos_mmheap.o(i.blk_set_used) for blk_set_used
+    tos_mmheap.o(i.blk_merge_next) refers to tos_mmheap.o(i.blk_next) for blk_next
+    tos_mmheap.o(i.blk_merge_next) refers to tos_mmheap.o(i.blk_remove) for blk_remove
+    tos_mmheap.o(i.blk_merge_next) refers to tos_mmheap.o(i.blk_absorb) for blk_absorb
+    tos_mmheap.o(i.blk_merge_prev) refers to tos_mmheap.o(i.blk_remove) for blk_remove
+    tos_mmheap.o(i.blk_merge_prev) refers to tos_mmheap.o(i.blk_absorb) for blk_absorb
+    tos_mmheap.o(i.blk_next) refers to tos_mmheap.o(i.blk_size) for blk_size
+    tos_mmheap.o(i.blk_next) refers to tos_mmheap.o(i.blk_to_ptr) for blk_to_ptr
+    tos_mmheap.o(i.blk_next) refers to tos_mmheap.o(i.offset_to_blk) for offset_to_blk
+    tos_mmheap.o(i.blk_prepare_used) refers to tos_mmheap.o(i.blk_trim_free) for blk_trim_free
+    tos_mmheap.o(i.blk_prepare_used) refers to tos_mmheap.o(i.blk_mark_as_used) for blk_mark_as_used
+    tos_mmheap.o(i.blk_prepare_used) refers to tos_mmheap.o(i.blk_to_ptr) for blk_to_ptr
+    tos_mmheap.o(i.blk_remove) refers to tos_mmheap.o(i.blk_size) for blk_size
+    tos_mmheap.o(i.blk_remove) refers to tos_mmheap.o(i.mapping_insert) for mapping_insert
+    tos_mmheap.o(i.blk_remove) refers to tos_mmheap.o(i.remove_free_block) for remove_free_block
+    tos_mmheap.o(i.blk_search_suitable) refers to tos_mmheap.o(i.__ffs) for __ffs
+    tos_mmheap.o(i.blk_search_suitable) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.blk_split) refers to tos_mmheap.o(i.blk_to_ptr) for blk_to_ptr
+    tos_mmheap.o(i.blk_split) refers to tos_mmheap.o(i.offset_to_blk) for offset_to_blk
+    tos_mmheap.o(i.blk_split) refers to tos_mmheap.o(i.blk_size) for blk_size
+    tos_mmheap.o(i.blk_split) refers to tos_mmheap.o(i.blk_set_size) for blk_set_size
+    tos_mmheap.o(i.blk_split) refers to tos_mmheap.o(i.blk_mark_as_free) for blk_mark_as_free
+    tos_mmheap.o(i.blk_trim_free) refers to tos_mmheap.o(i.blk_can_split) for blk_can_split
+    tos_mmheap.o(i.blk_trim_free) refers to tos_mmheap.o(i.blk_split) for blk_split
+    tos_mmheap.o(i.blk_trim_free) refers to tos_mmheap.o(i.blk_link_next) for blk_link_next
+    tos_mmheap.o(i.blk_trim_free) refers to tos_mmheap.o(i.blk_set_prev_free) for blk_set_prev_free
+    tos_mmheap.o(i.blk_trim_free) refers to tos_mmheap.o(i.blk_insert) for blk_insert
+    tos_mmheap.o(i.blk_trim_free_leading) refers to tos_mmheap.o(i.blk_can_split) for blk_can_split
+    tos_mmheap.o(i.blk_trim_free_leading) refers to tos_mmheap.o(i.blk_split) for blk_split
+    tos_mmheap.o(i.blk_trim_free_leading) refers to tos_mmheap.o(i.blk_set_prev_free) for blk_set_prev_free
+    tos_mmheap.o(i.blk_trim_free_leading) refers to tos_mmheap.o(i.blk_link_next) for blk_link_next
+    tos_mmheap.o(i.blk_trim_free_leading) refers to tos_mmheap.o(i.blk_insert) for blk_insert
+    tos_mmheap.o(i.blk_trim_used) refers to tos_mmheap.o(i.blk_can_split) for blk_can_split
+    tos_mmheap.o(i.blk_trim_used) refers to tos_mmheap.o(i.blk_split) for blk_split
+    tos_mmheap.o(i.blk_trim_used) refers to tos_mmheap.o(i.blk_set_prev_used) for blk_set_prev_used
+    tos_mmheap.o(i.blk_trim_used) refers to tos_mmheap.o(i.blk_merge_next) for blk_merge_next
+    tos_mmheap.o(i.blk_trim_used) refers to tos_mmheap.o(i.blk_insert) for blk_insert
+    tos_mmheap.o(i.generic_fls) refers to tos_cpu.o(i.tos_cpu_clz) for tos_cpu_clz
+    tos_mmheap.o(i.insert_free_block) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.mapping_insert) refers to tos_mmheap.o(i.__fls) for __fls
+    tos_mmheap.o(i.mapping_search) refers to tos_mmheap.o(i.__fls) for __fls
+    tos_mmheap.o(i.mapping_search) refers to tos_mmheap.o(i.mapping_insert) for mapping_insert
+    tos_mmheap.o(i.mmheap_ctl_init) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.mmheap_init) refers to tos_mmheap.o(i.mmheap_ctl_init) for mmheap_ctl_init
+    tos_mmheap.o(i.mmheap_init_with_pool) refers to tos_mmheap.o(i.mmheap_ctl_init) for mmheap_ctl_init
+    tos_mmheap.o(i.mmheap_init_with_pool) refers to tos_mmheap.o(i.tos_mmheap_pool_add) for tos_mmheap_pool_add
+    tos_mmheap.o(i.mmheap_pool_is_exist) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.mmheap_pool_unrecord) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.remove_free_block) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.adjust_request_size) for adjust_request_size
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.blk_locate_free) for blk_locate_free
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.blk_to_ptr) for blk_to_ptr
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.align_ptr) for align_ptr
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.blk_trim_free_leading) for blk_trim_free_leading
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.blk_prepare_used) for blk_prepare_used
+    tos_mmheap.o(i.tos_mmheap_alloc) refers to tos_mmheap.o(i.adjust_request_size) for adjust_request_size
+    tos_mmheap.o(i.tos_mmheap_alloc) refers to tos_mmheap.o(i.blk_locate_free) for blk_locate_free
+    tos_mmheap.o(i.tos_mmheap_alloc) refers to tos_mmheap.o(i.blk_prepare_used) for blk_prepare_used
+    tos_mmheap.o(i.tos_mmheap_calloc) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_mmheap.o(i.tos_mmheap_calloc) refers to memseta.o(.text) for __aeabi_memclr
+    tos_mmheap.o(i.tos_mmheap_check) refers to tos_mmheap.o(i.tos_mmheap_pool_check) for tos_mmheap_pool_check
+    tos_mmheap.o(i.tos_mmheap_check) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.tos_mmheap_free) refers to tos_mmheap.o(i.blk_mark_as_free) for blk_mark_as_free
+    tos_mmheap.o(i.tos_mmheap_free) refers to tos_mmheap.o(i.blk_merge_prev) for blk_merge_prev
+    tos_mmheap.o(i.tos_mmheap_free) refers to tos_mmheap.o(i.blk_merge_next) for blk_merge_next
+    tos_mmheap.o(i.tos_mmheap_free) refers to tos_mmheap.o(i.blk_insert) for blk_insert
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.mmheap_pool_is_exist) for mmheap_pool_is_exist
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.offset_to_blk) for offset_to_blk
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.blk_set_size) for blk_set_size
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.blk_set_free) for blk_set_free
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.blk_set_prev_used) for blk_set_prev_used
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.blk_insert) for blk_insert
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.blk_link_next) for blk_link_next
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.blk_set_used) for blk_set_used
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.blk_set_prev_free) for blk_set_prev_free
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.tos_mmheap_pool_check) refers to tos_mmheap.o(i.offset_to_blk) for offset_to_blk
+    tos_mmheap.o(i.tos_mmheap_pool_check) refers to tos_mmheap.o(i.blk_size) for blk_size
+    tos_mmheap.o(i.tos_mmheap_pool_check) refers to tos_mmheap.o(i.blk_next) for blk_next
+    tos_mmheap.o(i.tos_mmheap_pool_rmv) refers to tos_mmheap.o(i.mmheap_pool_is_exist) for mmheap_pool_is_exist
+    tos_mmheap.o(i.tos_mmheap_pool_rmv) refers to tos_mmheap.o(i.offset_to_blk) for offset_to_blk
+    tos_mmheap.o(i.tos_mmheap_pool_rmv) refers to tos_mmheap.o(i.blk_size) for blk_size
+    tos_mmheap.o(i.tos_mmheap_pool_rmv) refers to tos_mmheap.o(i.mapping_insert) for mapping_insert
+    tos_mmheap.o(i.tos_mmheap_pool_rmv) refers to tos_mmheap.o(i.remove_free_block) for remove_free_block
+    tos_mmheap.o(i.tos_mmheap_pool_rmv) refers to tos_mmheap.o(i.mmheap_pool_unrecord) for mmheap_pool_unrecord
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.blk_next) for blk_next
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.blk_size) for blk_size
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.adjust_request_size) for adjust_request_size
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.blk_merge_next) for blk_merge_next
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.blk_mark_as_used) for blk_mark_as_used
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.blk_trim_used) for blk_trim_used
+    tos_mutex.o(i.mutex_old_owner_release) refers to tos_task.o(i.tos_task_prio_change) for tos_task_prio_change
+    tos_mutex.o(i.mutex_release) refers to tos_mutex.o(i.mutex_old_owner_release) for mutex_old_owner_release
+    tos_mutex.o(i.mutex_release) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_mutex.o(i.tos_mutex_create) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_mutex.o(i.tos_mutex_create) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_mutex.o(i.tos_mutex_create) refers to tos_mutex.o(i.tos_list_init) for tos_list_init
+    tos_mutex.o(i.tos_mutex_create) refers to tos_mutex.o(i.knl_object_init) for knl_object_init
+    tos_mutex.o(i.tos_mutex_create_dyn) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_mutex.o(i.tos_mutex_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_calloc) for tos_mmheap_calloc
+    tos_mutex.o(i.tos_mutex_create_dyn) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_mutex.o(i.tos_mutex_create_dyn) refers to tos_mutex.o(i.tos_list_init) for tos_list_init
+    tos_mutex.o(i.tos_mutex_create_dyn) refers to tos_mutex.o(i.knl_object_init) for knl_object_init
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_mutex.o(i.knl_object_verify) for knl_object_verify
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_mutex.o(i.mutex_old_owner_release) for mutex_old_owner_release
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_mutex.o(i.tos_mutex_pend) refers to tos_mutex.o(i.tos_mutex_pend_timed) for tos_mutex_pend_timed
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_mutex.o(i.knl_object_verify) for knl_object_verify
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_mutex.o(i.mutex_fresh_owner_mark) for mutex_fresh_owner_mark
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_task.o(i.tos_task_prio_change) for tos_task_prio_change
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_global.o(.data) for k_curr_task
+    tos_mutex.o(i.tos_mutex_post) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_mutex.o(i.tos_mutex_post) refers to tos_mutex.o(i.knl_object_verify) for knl_object_verify
+    tos_mutex.o(i.tos_mutex_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mutex.o(i.tos_mutex_post) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_mutex.o(i.tos_mutex_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mutex.o(i.tos_mutex_post) refers to tos_mutex.o(i.mutex_old_owner_release) for mutex_old_owner_release
+    tos_mutex.o(i.tos_mutex_post) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_mutex.o(i.tos_mutex_post) refers to tos_pend.o(i.pend_highest_pending_task_get) for pend_highest_pending_task_get
+    tos_mutex.o(i.tos_mutex_post) refers to tos_mutex.o(i.mutex_fresh_owner_mark) for mutex_fresh_owner_mark
+    tos_mutex.o(i.tos_mutex_post) refers to tos_pend.o(i.pend_highest_pending_prio_get) for pend_highest_pending_prio_get
+    tos_mutex.o(i.tos_mutex_post) refers to tos_task.o(i.tos_task_prio_change) for tos_task_prio_change
+    tos_mutex.o(i.tos_mutex_post) refers to tos_pend.o(i.pend_wakeup_one) for pend_wakeup_one
+    tos_mutex.o(i.tos_mutex_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_pend.o(i.pend_highest_pending_prio_get) refers to tos_pend.o(i.tos_list_empty) for tos_list_empty
+    tos_pend.o(i.pend_is_nopending) refers to tos_pend.o(i.tos_list_empty) for tos_list_empty
+    tos_pend.o(i.pend_list_adjust) refers to tos_pend.o(i.tos_list_del) for tos_list_del
+    tos_pend.o(i.pend_list_adjust) refers to tos_pend.o(i.pend_list_add) for pend_list_add
+    tos_pend.o(i.pend_list_remove) refers to tos_pend.o(i.tos_list_del) for tos_list_del
+    tos_pend.o(i.pend_object_deinit) refers to tos_pend.o(i.tos_list_init) for tos_list_init
+    tos_pend.o(i.pend_object_init) refers to tos_pend.o(i.tos_list_init) for tos_list_init
+    tos_pend.o(i.pend_task_block) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_pend.o(i.pend_task_block) refers to tos_pend.o(i.pend_list_add) for pend_list_add
+    tos_pend.o(i.pend_task_block) refers to tos_tick.o(i.tick_list_add) for tick_list_add
+    tos_pend.o(i.pend_task_wakeup) refers to tos_pend.o(i.pend_list_remove) for pend_list_remove
+    tos_pend.o(i.pend_task_wakeup) refers to tos_tick.o(i.tick_list_remove) for tick_list_remove
+    tos_pend.o(i.pend_task_wakeup) refers to tos_sched.o(i.readyqueue_add) for readyqueue_add
+    tos_pend.o(i.pend_wakeup) refers to tos_pend.o(i.pend_wakeup_one) for pend_wakeup_one
+    tos_pend.o(i.pend_wakeup) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_pend.o(i.pend_wakeup_all) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_pend.o(i.pend_wakeup_one) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_priority_queue.o(i.prio_q_do_dequeue) refers to tos_priority_queue.o(i.prio_q_pool_mgr_slot_free) for prio_q_pool_mgr_slot_free
+    tos_priority_queue.o(i.prio_q_do_dequeue) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_priority_queue.o(i.prio_q_do_enqueue) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_priority_queue.o(i.prio_q_do_enqueue) refers to tos_priority_queue.o(i.prio_q_prio_mgr_slot_enqueue) for prio_q_prio_mgr_slot_enqueue
+    tos_priority_queue.o(i.prio_q_prio_mgr_deinit) refers to tos_binary_heap.o(i.tos_bin_heap_destroy) for tos_bin_heap_destroy
+    tos_priority_queue.o(i.prio_q_prio_mgr_init) refers to tos_binary_heap.o(i.tos_bin_heap_create) for tos_bin_heap_create
+    tos_priority_queue.o(i.prio_q_prio_mgr_init) refers to tos_priority_queue.o(i.prio_q_mgr_entry_cmp) for prio_q_mgr_entry_cmp
+    tos_priority_queue.o(i.prio_q_prio_mgr_reset) refers to tos_binary_heap.o(i.tos_bin_heap_flush) for tos_bin_heap_flush
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) refers to tos_binary_heap.o(i.tos_bin_heap_pop) for tos_bin_heap_pop
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) refers to printf5.o(i.__0printf$5) for __2printf
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) refers to tos_sys.o(i.tos_knl_sched_lock) for tos_knl_sched_lock
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) refers to tos_cpu.o(i.tos_cpu_int_disable) for tos_cpu_int_disable
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) refers to tos_priority_queue.o(.constdata) for __FUNCTION__
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_enqueue) refers to tos_binary_heap.o(i.tos_bin_heap_push) for tos_bin_heap_push
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_enqueue) refers to printf5.o(i.__0printf$5) for __2printf
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_enqueue) refers to tos_sys.o(i.tos_knl_sched_lock) for tos_knl_sched_lock
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_enqueue) refers to tos_cpu.o(i.tos_cpu_int_disable) for tos_cpu_int_disable
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_enqueue) refers to tos_priority_queue.o(.constdata) for __FUNCTION__
+    tos_priority_queue.o(i.tos_prio_q_create) refers to tos_priority_queue.o(i.prio_q_pool_mgr_init) for prio_q_pool_mgr_init
+    tos_priority_queue.o(i.tos_prio_q_create) refers to tos_priority_queue.o(i.prio_q_prio_mgr_init) for prio_q_prio_mgr_init
+    tos_priority_queue.o(i.tos_prio_q_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_priority_queue.o(i.tos_prio_q_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_priority_queue.o(i.tos_prio_q_create_dyn) refers to tos_priority_queue.o(i.tos_prio_q_create) for tos_prio_q_create
+    tos_priority_queue.o(i.tos_prio_q_dequeue) refers to tos_priority_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_priority_queue.o(i.tos_prio_q_dequeue) refers to tos_priority_queue.o(i.tos_prio_q_is_empty) for tos_prio_q_is_empty
+    tos_priority_queue.o(i.tos_prio_q_dequeue) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_queue.o(i.tos_prio_q_dequeue) refers to tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) for prio_q_prio_mgr_slot_dequeue
+    tos_priority_queue.o(i.tos_prio_q_dequeue) refers to tos_priority_queue.o(i.prio_q_do_dequeue) for prio_q_do_dequeue
+    tos_priority_queue.o(i.tos_prio_q_dequeue) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_queue.o(i.tos_prio_q_destroy) refers to tos_priority_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_priority_queue.o(i.tos_prio_q_destroy) refers to tos_priority_queue.o(i.prio_q_pool_mgr_deinit) for prio_q_pool_mgr_deinit
+    tos_priority_queue.o(i.tos_prio_q_destroy) refers to tos_priority_queue.o(i.prio_q_prio_mgr_deinit) for prio_q_prio_mgr_deinit
+    tos_priority_queue.o(i.tos_prio_q_destroy_dyn) refers to tos_priority_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_priority_queue.o(i.tos_prio_q_destroy_dyn) refers to tos_priority_queue.o(i.prio_q_pool_mgr_deinit) for prio_q_pool_mgr_deinit
+    tos_priority_queue.o(i.tos_prio_q_destroy_dyn) refers to tos_priority_queue.o(i.prio_q_prio_mgr_deinit) for prio_q_prio_mgr_deinit
+    tos_priority_queue.o(i.tos_prio_q_destroy_dyn) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_priority_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_priority_queue.o(i.tos_prio_q_is_full) for tos_prio_q_is_full
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_priority_queue.o(i.prio_q_pool_mgr_slot_alloc) for prio_q_pool_mgr_slot_alloc
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to printf5.o(i.__0printf$5) for __2printf
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_sys.o(i.tos_knl_sched_lock) for tos_knl_sched_lock
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_cpu.o(i.tos_cpu_int_disable) for tos_cpu_int_disable
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_priority_queue.o(i.prio_q_do_enqueue) for prio_q_do_enqueue
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_priority_queue.o(.constdata) for __FUNCTION__
+    tos_priority_queue.o(i.tos_prio_q_flush) refers to tos_priority_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_priority_queue.o(i.tos_prio_q_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_queue.o(i.tos_prio_q_flush) refers to tos_priority_queue.o(i.prio_q_pool_mgr_reset) for prio_q_pool_mgr_reset
+    tos_priority_queue.o(i.tos_prio_q_flush) refers to tos_priority_queue.o(i.prio_q_prio_mgr_reset) for prio_q_prio_mgr_reset
+    tos_priority_queue.o(i.tos_prio_q_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_queue.o(i.tos_prio_q_is_empty) refers to tos_priority_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_priority_queue.o(i.tos_prio_q_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_queue.o(i.tos_prio_q_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_queue.o(i.tos_prio_q_is_full) refers to tos_priority_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_priority_queue.o(i.tos_prio_q_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_queue.o(i.tos_prio_q_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_ring_queue.o(i.tos_ring_q_create) refers to tos_ring_queue.o(i.knl_object_init) for knl_object_init
+    tos_ring_queue.o(i.tos_ring_q_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_ring_queue.o(i.tos_ring_q_create_dyn) refers to tos_ring_queue.o(i.knl_object_init) for knl_object_init
+    tos_ring_queue.o(i.tos_ring_q_dequeue) refers to tos_ring_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_ring_queue.o(i.tos_ring_q_dequeue) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_ring_queue.o(i.tos_ring_q_dequeue) refers to tos_ring_queue.o(i.tos_ring_q_is_empty) for tos_ring_q_is_empty
+    tos_ring_queue.o(i.tos_ring_q_dequeue) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_ring_queue.o(i.tos_ring_q_dequeue) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_ring_queue.o(i.tos_ring_q_destroy) refers to tos_ring_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_ring_queue.o(i.tos_ring_q_destroy_dyn) refers to tos_ring_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_ring_queue.o(i.tos_ring_q_destroy_dyn) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_ring_queue.o(i.tos_ring_q_enqueue) refers to tos_ring_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_ring_queue.o(i.tos_ring_q_enqueue) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_ring_queue.o(i.tos_ring_q_enqueue) refers to tos_ring_queue.o(i.tos_ring_q_is_full) for tos_ring_q_is_full
+    tos_ring_queue.o(i.tos_ring_q_enqueue) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_ring_queue.o(i.tos_ring_q_enqueue) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_ring_queue.o(i.tos_ring_q_flush) refers to tos_ring_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_ring_queue.o(i.tos_ring_q_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_ring_queue.o(i.tos_ring_q_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_ring_queue.o(i.tos_ring_q_is_empty) refers to tos_ring_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_ring_queue.o(i.tos_ring_q_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_ring_queue.o(i.tos_ring_q_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_ring_queue.o(i.tos_ring_q_is_full) refers to tos_ring_queue.o(i.knl_object_verify) for knl_object_verify
+    tos_ring_queue.o(i.tos_ring_q_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_ring_queue.o(i.tos_ring_q_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_robin.o(i.robin_sched) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_robin.o(i.robin_sched) refers to tos_sched.o(i.readyqueue_first_task_get) for readyqueue_first_task_get
+    tos_robin.o(i.robin_sched) refers to tos_sys.o(i.knl_is_idle) for knl_is_idle
+    tos_robin.o(i.robin_sched) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_robin.o(i.robin_sched) refers to tos_sched.o(i.readyqueue_is_prio_onlyone) for readyqueue_is_prio_onlyone
+    tos_robin.o(i.robin_sched) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_robin.o(i.robin_sched) refers to tos_sched.o(i.readyqueue_move_head_to_tail) for readyqueue_move_head_to_tail
+    tos_robin.o(i.robin_sched) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_robin.o(i.robin_sched) refers to tos_global.o(.data) for k_curr_task
+    tos_robin.o(i.tos_robin_default_timeslice_config) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_robin.o(i.tos_robin_default_timeslice_config) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_robin.o(i.tos_robin_default_timeslice_config) refers to tos_global.o(.data) for k_robin_default_timeslice
+    tos_robin.o(i.tos_robin_timeslice_set) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_robin.o(i.tos_robin_timeslice_set) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_robin.o(i.tos_robin_timeslice_set) refers to tos_global.o(.data) for k_curr_task
+    tos_rwlock.o(i.tos_rwlock_create) refers to tos_sem.o(i.tos_sem_create) for tos_sem_create
+    tos_rwlock.o(i.tos_rwlock_create) refers to tos_mutex.o(i.tos_mutex_create) for tos_mutex_create
+    tos_rwlock.o(i.tos_rwlock_create) refers to tos_sem.o(i.tos_sem_destroy) for tos_sem_destroy
+    tos_rwlock.o(i.tos_rwlock_destroy) refers to tos_rwlock.o(i.knl_object_verify) for knl_object_verify
+    tos_rwlock.o(i.tos_rwlock_destroy) refers to tos_sem.o(i.tos_sem_destroy) for tos_sem_destroy
+    tos_rwlock.o(i.tos_rwlock_destroy) refers to tos_mutex.o(i.tos_mutex_destroy) for tos_mutex_destroy
+    tos_rwlock.o(i.tos_rwlock_post) refers to tos_rwlock.o(i.knl_object_verify) for knl_object_verify
+    tos_rwlock.o(i.tos_rwlock_post) refers to tos_mutex.o(i.tos_mutex_pend) for tos_mutex_pend
+    tos_rwlock.o(i.tos_rwlock_post) refers to tos_sem.o(i.tos_sem_post_all) for tos_sem_post_all
+    tos_rwlock.o(i.tos_rwlock_post) refers to tos_mutex.o(i.tos_mutex_post) for tos_mutex_post
+    tos_rwlock.o(i.tos_rwlock_rpend) refers to tos_rwlock.o(i.tos_rwlock_rpend_timed) for tos_rwlock_rpend_timed
+    tos_rwlock.o(i.tos_rwlock_rpend_timed) refers to tos_rwlock.o(i.knl_object_verify) for knl_object_verify
+    tos_rwlock.o(i.tos_rwlock_rpend_timed) refers to tos_stopwatch.o(i.tos_stopwatch_create) for tos_stopwatch_create
+    tos_rwlock.o(i.tos_rwlock_rpend_timed) refers to tos_stopwatch.o(i.tos_stopwatch_countdown) for tos_stopwatch_countdown
+    tos_rwlock.o(i.tos_rwlock_rpend_timed) refers to tos_mutex.o(i.tos_mutex_pend_timed) for tos_mutex_pend_timed
+    tos_rwlock.o(i.tos_rwlock_rpend_timed) refers to tos_mutex.o(i.tos_mutex_post) for tos_mutex_post
+    tos_rwlock.o(i.tos_rwlock_rpend_timed) refers to tos_stopwatch.o(i.tos_stopwatch_remain) for tos_stopwatch_remain
+    tos_rwlock.o(i.tos_rwlock_rpend_timed) refers to tos_sem.o(i.tos_sem_pend) for tos_sem_pend
+    tos_rwlock.o(i.tos_rwlock_rpend_try) refers to tos_rwlock.o(i.knl_object_verify) for knl_object_verify
+    tos_rwlock.o(i.tos_rwlock_rpend_try) refers to tos_mutex.o(i.tos_mutex_pend_timed) for tos_mutex_pend_timed
+    tos_rwlock.o(i.tos_rwlock_rpend_try) refers to tos_mutex.o(i.tos_mutex_post) for tos_mutex_post
+    tos_rwlock.o(i.tos_rwlock_rpost) refers to tos_rwlock.o(i.knl_object_verify) for knl_object_verify
+    tos_rwlock.o(i.tos_rwlock_rpost) refers to tos_mutex.o(i.tos_mutex_pend) for tos_mutex_pend
+    tos_rwlock.o(i.tos_rwlock_rpost) refers to tos_sem.o(i.tos_sem_post_all) for tos_sem_post_all
+    tos_rwlock.o(i.tos_rwlock_rpost) refers to tos_mutex.o(i.tos_mutex_post) for tos_mutex_post
+    tos_rwlock.o(i.tos_rwlock_wpend) refers to tos_rwlock.o(i.tos_rwlock_wpend_timed) for tos_rwlock_wpend_timed
+    tos_rwlock.o(i.tos_rwlock_wpend_timed) refers to tos_rwlock.o(i.knl_object_verify) for knl_object_verify
+    tos_rwlock.o(i.tos_rwlock_wpend_timed) refers to tos_stopwatch.o(i.tos_stopwatch_create) for tos_stopwatch_create
+    tos_rwlock.o(i.tos_rwlock_wpend_timed) refers to tos_stopwatch.o(i.tos_stopwatch_countdown) for tos_stopwatch_countdown
+    tos_rwlock.o(i.tos_rwlock_wpend_timed) refers to tos_mutex.o(i.tos_mutex_pend_timed) for tos_mutex_pend_timed
+    tos_rwlock.o(i.tos_rwlock_wpend_timed) refers to tos_stopwatch.o(i.tos_stopwatch_remain) for tos_stopwatch_remain
+    tos_rwlock.o(i.tos_rwlock_wpend_timed) refers to tos_sem.o(i.tos_sem_pend) for tos_sem_pend
+    tos_rwlock.o(i.tos_rwlock_wpend_timed) refers to tos_sem.o(i.tos_sem_post_all) for tos_sem_post_all
+    tos_rwlock.o(i.tos_rwlock_wpend_timed) refers to tos_mutex.o(i.tos_mutex_post) for tos_mutex_post
+    tos_rwlock.o(i.tos_rwlock_wpend_try) refers to tos_rwlock.o(i.knl_object_verify) for knl_object_verify
+    tos_rwlock.o(i.tos_rwlock_wpend_try) refers to tos_mutex.o(i.tos_mutex_pend_timed) for tos_mutex_pend_timed
+    tos_rwlock.o(i.tos_rwlock_wpend_try) refers to tos_mutex.o(i.tos_mutex_post) for tos_mutex_post
+    tos_rwlock.o(i.tos_rwlock_wpost) refers to tos_rwlock.o(i.knl_object_verify) for knl_object_verify
+    tos_rwlock.o(i.tos_rwlock_wpost) refers to tos_mutex.o(i.tos_mutex_pend) for tos_mutex_pend
+    tos_rwlock.o(i.tos_rwlock_wpost) refers to tos_sem.o(i.tos_sem_post_all) for tos_sem_post_all
+    tos_rwlock.o(i.tos_rwlock_wpost) refers to tos_mutex.o(i.tos_mutex_post) for tos_mutex_post
+    tos_sched.o(i.readyqueue_add) refers to tos_sched.o(i.readyqueue_add_tail) for readyqueue_add_tail
+    tos_sched.o(i.readyqueue_add) refers to tos_sched.o(i.readyqueue_add_head) for readyqueue_add_head
+    tos_sched.o(i.readyqueue_add) refers to tos_global.o(.data) for k_curr_task
+    tos_sched.o(i.readyqueue_add_head) refers to tos_sched.o(i.tos_list_empty) for tos_list_empty
+    tos_sched.o(i.readyqueue_add_head) refers to tos_sched.o(i.readyqueue_prio_mark) for readyqueue_prio_mark
+    tos_sched.o(i.readyqueue_add_head) refers to tos_sched.o(i._list_add) for _list_add
+    tos_sched.o(i.readyqueue_add_head) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_add_tail) refers to tos_sched.o(i.tos_list_empty) for tos_list_empty
+    tos_sched.o(i.readyqueue_add_tail) refers to tos_sched.o(i.readyqueue_prio_mark) for readyqueue_prio_mark
+    tos_sched.o(i.readyqueue_add_tail) refers to tos_sched.o(i.tos_list_add_tail) for tos_list_add_tail
+    tos_sched.o(i.readyqueue_add_tail) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_first_task_get) refers to tos_sched.o(i.tos_list_empty) for tos_list_empty
+    tos_sched.o(i.readyqueue_first_task_get) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_highest_ready_task_get) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_init) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_is_prio_onlyone) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_move_head_to_tail) refers to tos_sched.o(i.tos_list_empty) for tos_list_empty
+    tos_sched.o(i.readyqueue_move_head_to_tail) refers to tos_sched.o(i._list_del) for _list_del
+    tos_sched.o(i.readyqueue_move_head_to_tail) refers to tos_sched.o(i.tos_list_add_tail) for tos_list_add_tail
+    tos_sched.o(i.readyqueue_move_head_to_tail) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_prio_highest_get) refers to tos_cpu.o(i.tos_cpu_clz) for tos_cpu_clz
+    tos_sched.o(i.readyqueue_prio_highest_get) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_prio_mark) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_remove) refers to tos_sched.o(i._list_del) for _list_del
+    tos_sched.o(i.readyqueue_remove) refers to tos_sched.o(i.tos_list_empty) for tos_list_empty
+    tos_sched.o(i.readyqueue_remove) refers to tos_sched.o(i.readyqueue_prio_highest_get) for readyqueue_prio_highest_get
+    tos_sched.o(i.readyqueue_remove) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.tos_list_add_tail) refers to tos_sched.o(i._list_add) for _list_add
+    tos_sem.o(i.sem_do_post) refers to tos_sem.o(i.knl_object_verify) for knl_object_verify
+    tos_sem.o(i.sem_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sem.o(i.sem_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sem.o(i.sem_do_post) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_sem.o(i.sem_do_post) refers to tos_pend.o(i.pend_wakeup) for pend_wakeup
+    tos_sem.o(i.sem_do_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_sem.o(i.tos_sem_create) refers to tos_sem.o(i.tos_sem_create_max) for tos_sem_create_max
+    tos_sem.o(i.tos_sem_create_dyn) refers to tos_sem.o(i.tos_sem_create_max_dyn) for tos_sem_create_max_dyn
+    tos_sem.o(i.tos_sem_create_max) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_sem.o(i.tos_sem_create_max) refers to tos_sem.o(i.knl_object_init) for knl_object_init
+    tos_sem.o(i.tos_sem_create_max_dyn) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_sem.o(i.tos_sem_create_max_dyn) refers to tos_mmheap.o(i.tos_mmheap_calloc) for tos_mmheap_calloc
+    tos_sem.o(i.tos_sem_create_max_dyn) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_sem.o(i.tos_sem_create_max_dyn) refers to tos_sem.o(i.knl_object_init) for knl_object_init
+    tos_sem.o(i.tos_sem_destroy) refers to tos_sem.o(i.knl_object_verify) for knl_object_verify
+    tos_sem.o(i.tos_sem_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sem.o(i.tos_sem_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_sem.o(i.tos_sem_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_sem.o(i.tos_sem_destroy) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_sem.o(i.tos_sem_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sem.o(i.tos_sem_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_sem.o(i.tos_sem_pend) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_sem.o(i.tos_sem_pend) refers to tos_sem.o(i.knl_object_verify) for knl_object_verify
+    tos_sem.o(i.tos_sem_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sem.o(i.tos_sem_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sem.o(i.tos_sem_pend) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_sem.o(i.tos_sem_pend) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_sem.o(i.tos_sem_pend) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_sem.o(i.tos_sem_pend) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_sem.o(i.tos_sem_pend) refers to tos_global.o(.data) for k_curr_task
+    tos_sem.o(i.tos_sem_post) refers to tos_sem.o(i.sem_do_post) for sem_do_post
+    tos_sem.o(i.tos_sem_post_all) refers to tos_sem.o(i.sem_do_post) for sem_do_post
+    tos_stopwatch.o(i.tos_stopwatch_countdown) refers to tos_stopwatch.o(i.knl_object_verify) for knl_object_verify
+    tos_stopwatch.o(i.tos_stopwatch_countdown) refers to tos_time.o(i.tos_systick_get) for tos_systick_get
+    tos_stopwatch.o(i.tos_stopwatch_countdown_ms) refers to tos_stopwatch.o(i.knl_object_verify) for knl_object_verify
+    tos_stopwatch.o(i.tos_stopwatch_countdown_ms) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    tos_stopwatch.o(i.tos_stopwatch_countdown_ms) refers to tos_stopwatch.o(i.tos_stopwatch_countdown) for tos_stopwatch_countdown
+    tos_stopwatch.o(i.tos_stopwatch_delay) refers to tos_time.o(i.tos_systick_get) for tos_systick_get
+    tos_stopwatch.o(i.tos_stopwatch_delay_ms) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    tos_stopwatch.o(i.tos_stopwatch_delay_ms) refers to tos_stopwatch.o(i.tos_stopwatch_delay) for tos_stopwatch_delay
+    tos_stopwatch.o(i.tos_stopwatch_destroy) refers to tos_stopwatch.o(i.knl_object_verify) for knl_object_verify
+    tos_stopwatch.o(i.tos_stopwatch_is_expired) refers to tos_stopwatch.o(i.knl_object_verify) for knl_object_verify
+    tos_stopwatch.o(i.tos_stopwatch_is_expired) refers to tos_time.o(i.tos_systick_get) for tos_systick_get
+    tos_stopwatch.o(i.tos_stopwatch_remain) refers to tos_stopwatch.o(i.knl_object_verify) for knl_object_verify
+    tos_stopwatch.o(i.tos_stopwatch_remain) refers to tos_stopwatch.o(i.tos_stopwatch_is_expired) for tos_stopwatch_is_expired
+    tos_stopwatch.o(i.tos_stopwatch_remain) refers to tos_time.o(i.tos_systick_get) for tos_systick_get
+    tos_stopwatch.o(i.tos_stopwatch_remain_ms) refers to tos_stopwatch.o(i.knl_object_verify) for knl_object_verify
+    tos_stopwatch.o(i.tos_stopwatch_remain_ms) refers to tos_stopwatch.o(i.tos_stopwatch_is_expired) for tos_stopwatch_is_expired
+    tos_stopwatch.o(i.tos_stopwatch_remain_ms) refers to tos_time.o(i.tos_systick_get) for tos_systick_get
+    tos_stopwatch.o(i.tos_stopwatch_remain_ms) refers to uldiv.o(.text) for __aeabi_uldivmod
+    tos_sys.o(i.knl_idle_init) refers to tos_task.o(i.tos_task_create) for tos_task_create
+    tos_sys.o(i.knl_idle_init) refers to tos_global.o(.constdata) for k_idle_task_stk_size
+    tos_sys.o(i.knl_idle_init) refers to tos_sys.o(i.knl_idle_entry) for knl_idle_entry
+    tos_sys.o(i.knl_idle_init) refers to tos_global.o(.bss) for k_idle_task
+    tos_sys.o(i.knl_is_idle) refers to tos_global.o(.bss) for k_idle_task
+    tos_sys.o(i.knl_is_inirq) refers to tos_global.o(.data) for k_irq_nest_cnt
+    tos_sys.o(i.knl_is_sched_locked) refers to tos_global.o(.data) for k_sched_lock_nest_cnt
+    tos_sys.o(i.knl_is_self) refers to tos_global.o(.data) for k_curr_task
+    tos_sys.o(i.knl_sched) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_sys.o(i.knl_sched) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_sys.o(i.knl_sched) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_sys.o(i.knl_sched) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sys.o(i.knl_sched) refers to tos_sched.o(i.readyqueue_highest_ready_task_get) for readyqueue_highest_ready_task_get
+    tos_sys.o(i.knl_sched) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_sys.o(i.knl_sched) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sys.o(i.knl_sched) refers to tos_cpu.o(i.cpu_context_switch) for cpu_context_switch
+    tos_sys.o(i.knl_sched) refers to tos_global.o(.data) for k_next_task
+    tos_sys.o(i.tos_knl_init) refers to tos_cpu.o(i.cpu_init) for cpu_init
+    tos_sys.o(i.tos_knl_init) refers to tos_sched.o(i.readyqueue_init) for readyqueue_init
+    tos_sys.o(i.tos_knl_init) refers to tos_mmheap.o(i.mmheap_init_with_pool) for mmheap_init_with_pool
+    tos_sys.o(i.tos_knl_init) refers to tos_sys.o(i.knl_idle_init) for knl_idle_init
+    tos_sys.o(i.tos_knl_init) refers to tos_timer.o(i.timer_init) for timer_init
+    tos_sys.o(i.tos_knl_init) refers to tos_global.o(.bss) for k_mmheap_default_pool
+    tos_sys.o(i.tos_knl_irq_enter) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_sys.o(i.tos_knl_irq_enter) refers to tos_global.o(.data) for k_irq_nest_cnt
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_sched.o(i.readyqueue_highest_ready_task_get) for readyqueue_highest_ready_task_get
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_cpu.o(i.cpu_irq_context_switch) for cpu_irq_context_switch
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_global.o(.data) for k_irq_nest_cnt
+    tos_sys.o(i.tos_knl_is_running) refers to tos_global.o(.data) for k_knl_state
+    tos_sys.o(i.tos_knl_sched_lock) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_sys.o(i.tos_knl_sched_lock) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_sys.o(i.tos_knl_sched_lock) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sys.o(i.tos_knl_sched_lock) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sys.o(i.tos_knl_sched_lock) refers to tos_global.o(.data) for k_sched_lock_nest_cnt
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_global.o(.data) for k_sched_lock_nest_cnt
+    tos_sys.o(i.tos_knl_start) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_sys.o(i.tos_knl_start) refers to tos_sched.o(i.readyqueue_highest_ready_task_get) for readyqueue_highest_ready_task_get
+    tos_sys.o(i.tos_knl_start) refers to tos_cpu.o(i.cpu_sched_start) for cpu_sched_start
+    tos_sys.o(i.tos_knl_start) refers to tos_global.o(.data) for k_next_task
+    tos_task.o(i.task_default_walker) refers to printf5.o(i.__0printf$5) for __2printf
+    tos_task.o(i.task_default_walker) refers to tos_task.o(i.tos_task_curr_task_get) for tos_task_curr_task_get
+    tos_task.o(i.task_destroy_static) refers to tos_task.o(i.task_do_destroy) for task_do_destroy
+    tos_task.o(i.task_do_destroy) refers to tos_sys.o(i.knl_is_idle) for knl_is_idle
+    tos_task.o(i.task_do_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.task_do_destroy) refers to tos_task.o(i.tos_list_empty) for tos_list_empty
+    tos_task.o(i.task_do_destroy) refers to tos_task.o(i.task_mutex_release) for task_mutex_release
+    tos_task.o(i.task_do_destroy) refers to tos_task.o(i.task_state_is_ready) for task_state_is_ready
+    tos_task.o(i.task_do_destroy) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_task.o(i.task_do_destroy) refers to tos_tick.o(i.tick_list_remove) for tick_list_remove
+    tos_task.o(i.task_do_destroy) refers to tos_pend.o(i.pend_list_remove) for pend_list_remove
+    tos_task.o(i.task_do_destroy) refers to tos_task.o(i.task_reset) for task_reset
+    tos_task.o(i.task_do_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.task_do_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.task_exit) refers to tos_task.o(i.tos_task_destroy) for tos_task_destroy
+    tos_task.o(i.task_highest_pending_prio_get) refers to tos_pend.o(i.pend_highest_pending_prio_get) for pend_highest_pending_prio_get
+    tos_task.o(i.task_mutex_release) refers to tos_mutex.o(i.mutex_release) for mutex_release
+    tos_task.o(i.task_reset) refers to tos_task.o(i.tos_list_init) for tos_list_init
+    tos_task.o(i.tos_task_create) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_create) refers to tos_task.o(i.knl_object_verify) for knl_object_verify
+    tos_task.o(i.tos_task_create) refers to tos_sys.o(i.knl_is_idle) for knl_is_idle
+    tos_task.o(i.tos_task_create) refers to tos_task.o(i.task_reset) for task_reset
+    tos_task.o(i.tos_task_create) refers to tos_cpu.o(i.cpu_task_stk_init) for cpu_task_stk_init
+    tos_task.o(i.tos_task_create) refers to strncpy.o(.text) for strncpy
+    tos_task.o(i.tos_task_create) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_create) refers to tos_sched.o(i.readyqueue_add_tail) for readyqueue_add_tail
+    tos_task.o(i.tos_task_create) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_create) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_task.o(i.tos_task_create) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_create) refers to tos_global.o(.data) for k_stat_list
+    tos_task.o(i.tos_task_create) refers to tos_task.o(i.task_exit) for task_exit
+    tos_task.o(i.tos_task_curr_task_get) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_curr_task_get) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_task.o(i.tos_task_curr_task_get) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_curr_task_get) refers to tos_global.o(.data) for k_curr_task
+    tos_task.o(i.tos_task_delay) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_delay) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_task.o(i.tos_task_delay) refers to tos_task.o(i.tos_task_yield) for tos_task_yield
+    tos_task.o(i.tos_task_delay) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_delay) refers to tos_tick.o(i.tick_list_add) for tick_list_add
+    tos_task.o(i.tos_task_delay) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_task.o(i.tos_task_delay) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_delay) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_delay) refers to tos_global.o(.data) for k_curr_task
+    tos_task.o(i.tos_task_delay_abort) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_delay_abort) refers to tos_task.o(i.knl_object_verify) for knl_object_verify
+    tos_task.o(i.tos_task_delay_abort) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_delay_abort) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_task.o(i.tos_task_delay_abort) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_delay_abort) refers to tos_tick.o(i.tick_list_remove) for tick_list_remove
+    tos_task.o(i.tos_task_delay_abort) refers to tos_sched.o(i.readyqueue_add) for readyqueue_add
+    tos_task.o(i.tos_task_delay_abort) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_destroy) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_destroy) refers to tos_task.o(i.knl_object_verify) for knl_object_verify
+    tos_task.o(i.tos_task_destroy) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_task.o(i.tos_task_destroy) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_task.o(i.tos_task_destroy) refers to tos_task.o(i.task_destroy_static) for task_destroy_static
+    tos_task.o(i.tos_task_destroy) refers to tos_global.o(.data) for k_curr_task
+    tos_task.o(i.tos_task_info_display) refers to tos_task.o(i.tos_task_walkthru) for tos_task_walkthru
+    tos_task.o(i.tos_task_info_display) refers to tos_task.o(i.task_default_walker) for task_default_walker
+    tos_task.o(i.tos_task_prio_change) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_prio_change) refers to tos_task.o(i.knl_object_verify) for knl_object_verify
+    tos_task.o(i.tos_task_prio_change) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_prio_change) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_prio_change) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_prio_change) refers to tos_task.o(i.tos_list_empty) for tos_list_empty
+    tos_task.o(i.tos_task_prio_change) refers to tos_task.o(i.task_highest_pending_prio_get) for task_highest_pending_prio_get
+    tos_task.o(i.tos_task_prio_change) refers to tos_pend.o(i.pend_list_adjust) for pend_list_adjust
+    tos_task.o(i.tos_task_prio_change) refers to tos_task.o(i.task_state_is_ready) for task_state_is_ready
+    tos_task.o(i.tos_task_prio_change) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_task.o(i.tos_task_prio_change) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_task.o(i.tos_task_prio_change) refers to tos_sched.o(i.readyqueue_add_head) for readyqueue_add_head
+    tos_task.o(i.tos_task_prio_change) refers to tos_sched.o(i.readyqueue_add_tail) for readyqueue_add_tail
+    tos_task.o(i.tos_task_resume) refers to tos_task.o(i.knl_object_verify) for knl_object_verify
+    tos_task.o(i.tos_task_resume) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_task.o(i.tos_task_resume) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_resume) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_resume) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_resume) refers to tos_task.o(i.task_state_is_ready) for task_state_is_ready
+    tos_task.o(i.tos_task_resume) refers to tos_sched.o(i.readyqueue_add) for readyqueue_add
+    tos_task.o(i.tos_task_suspend) refers to tos_task.o(i.knl_object_verify) for knl_object_verify
+    tos_task.o(i.tos_task_suspend) refers to tos_sys.o(i.knl_is_idle) for knl_is_idle
+    tos_task.o(i.tos_task_suspend) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_task.o(i.tos_task_suspend) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_task.o(i.tos_task_suspend) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_suspend) refers to tos_task.o(i.task_state_is_ready) for task_state_is_ready
+    tos_task.o(i.tos_task_suspend) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_task.o(i.tos_task_suspend) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_suspend) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_suspend) refers to tos_global.o(.data) for k_curr_task
+    tos_task.o(i.tos_task_walkthru) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_walkthru) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_walkthru) refers to tos_global.o(.data) for k_stat_list
+    tos_task.o(i.tos_task_yield) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_yield) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_yield) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_task.o(i.tos_task_yield) refers to tos_sched.o(i.readyqueue_add_tail) for readyqueue_add_tail
+    tos_task.o(i.tos_task_yield) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_yield) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_yield) refers to tos_global.o(.data) for k_curr_task
+    tos_tick.o(i.tick_list_add) refers to tos_tick.o(i.tick_task_place) for tick_task_place
+    tos_tick.o(i.tick_list_remove) refers to tos_tick.o(i.tick_task_takeoff) for tick_task_takeoff
+    tos_tick.o(i.tick_next_expires_get) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_tick.o(i.tick_next_expires_get) refers to tos_tick.o(i.tos_list_empty) for tos_list_empty
+    tos_tick.o(i.tick_next_expires_get) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_tick.o(i.tick_next_expires_get) refers to tos_global.o(.data) for k_tick_list
+    tos_tick.o(i.tick_task_place) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_tick.o(i.tick_task_place) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_tick.o(i.tick_task_place) refers to tos_global.o(.data) for k_tick_list
+    tos_tick.o(i.tick_task_takeoff) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_tick.o(i.tick_task_takeoff) refers to tos_tick.o(i.tos_list_empty) for tos_list_empty
+    tos_tick.o(i.tick_task_takeoff) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_tick.o(i.tick_task_takeoff) refers to tos_global.o(.data) for k_tick_list
+    tos_tick.o(i.tick_update) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_tick.o(i.tick_update) refers to tos_tick.o(i.tos_list_empty) for tos_list_empty
+    tos_tick.o(i.tick_update) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_tick.o(i.tick_update) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_tick.o(i.tick_update) refers to tos_global.o(.data) for k_tick_count
+    tos_tick.o(i.tos_tick_handler) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_tick.o(i.tos_tick_handler) refers to tos_tick.o(i.tick_update) for tick_update
+    tos_tick.o(i.tos_tick_handler) refers to tos_timer.o(i.timer_update) for timer_update
+    tos_tick.o(i.tos_tick_handler) refers to tos_robin.o(i.robin_sched) for robin_sched
+    tos_tick.o(i.tos_tick_handler) refers to tos_global.o(.data) for k_curr_task
+    tos_time.o(i.tos_millisec2tick) refers to uldiv.o(.text) for __aeabi_uldivmod
+    tos_time.o(i.tos_sleep_hmsm) refers to uldiv.o(.text) for __aeabi_uldivmod
+    tos_time.o(i.tos_sleep_hmsm) refers to tos_task.o(i.tos_task_delay) for tos_task_delay
+    tos_time.o(i.tos_sleep_ms) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    tos_time.o(i.tos_sleep_ms) refers to tos_task.o(i.tos_task_delay) for tos_task_delay
+    tos_time.o(i.tos_systick_get) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_time.o(i.tos_systick_get) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_time.o(i.tos_systick_get) refers to tos_global.o(.data) for k_tick_count
+    tos_time.o(i.tos_systick_set) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_time.o(i.tos_systick_set) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_time.o(i.tos_systick_set) refers to tos_global.o(.data) for k_tick_count
+    tos_time.o(i.tos_tick2millisec) refers to uldiv.o(.text) for __aeabi_uldivmod
+    tos_timer.o(i.timer_change) refers to tos_timer.o(i.knl_object_verify) for knl_object_verify
+    tos_timer.o(i.timer_next_expires_get) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_timer.o(i.timer_next_expires_get) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_timer.o(i.timer_next_expires_get) refers to tos_global.o(.data) for k_timer_ctl
+    tos_timer.o(i.timer_place) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_timer.o(i.timer_place) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_timer.o(i.timer_place) refers to tos_global.o(.data) for k_tick_count
+    tos_timer.o(i.timer_takeoff) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_timer.o(i.timer_takeoff) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_timer.o(i.timer_takeoff) refers to tos_global.o(.data) for k_timer_ctl
+    tos_timer.o(i.timer_update) refers to tos_sys.o(i.tos_knl_sched_lock) for tos_knl_sched_lock
+    tos_timer.o(i.timer_update) refers to tos_timer.o(i.timer_takeoff) for timer_takeoff
+    tos_timer.o(i.timer_update) refers to tos_timer.o(i.timer_place) for timer_place
+    tos_timer.o(i.timer_update) refers to tos_sys.o(i.tos_knl_sched_unlock) for tos_knl_sched_unlock
+    tos_timer.o(i.timer_update) refers to tos_global.o(.data) for k_timer_ctl
+    tos_timer.o(i.tos_timer_create) refers to tos_timer.o(i.tos_list_init) for tos_list_init
+    tos_timer.o(i.tos_timer_delay_change) refers to tos_timer.o(i.timer_change) for timer_change
+    tos_timer.o(i.tos_timer_destroy) refers to tos_timer.o(i.knl_object_verify) for knl_object_verify
+    tos_timer.o(i.tos_timer_destroy) refers to tos_timer.o(i.timer_takeoff) for timer_takeoff
+    tos_timer.o(i.tos_timer_destroy) refers to tos_timer.o(i.tos_list_init) for tos_list_init
+    tos_timer.o(i.tos_timer_period_change) refers to tos_timer.o(i.timer_change) for timer_change
+    tos_timer.o(i.tos_timer_start) refers to tos_timer.o(i.knl_object_verify) for knl_object_verify
+    tos_timer.o(i.tos_timer_start) refers to tos_timer.o(i.timer_takeoff) for timer_takeoff
+    tos_timer.o(i.tos_timer_start) refers to tos_timer.o(i.timer_place) for timer_place
+    tos_timer.o(i.tos_timer_stop) refers to tos_timer.o(i.knl_object_verify) for knl_object_verify
+    tos_timer.o(i.tos_timer_stop) refers to tos_timer.o(i.timer_takeoff) for timer_takeoff
+    cmsis_os.o(i.osDelay) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    cmsis_os.o(i.osDelay) refers to tos_task.o(i.tos_task_delay) for tos_task_delay
+    cmsis_os.o(i.osDelay) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osKernelInitialize) refers to tos_sys.o(i.tos_knl_init) for tos_knl_init
+    cmsis_os.o(i.osKernelInitialize) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osKernelRunning) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    cmsis_os.o(i.osKernelStart) refers to tos_sys.o(i.tos_knl_start) for tos_knl_start
+    cmsis_os.o(i.osKernelStart) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osKernelSysTick) refers to tos_time.o(i.tos_systick_get) for tos_systick_get
+    cmsis_os.o(i.osMutexCreate) refers to tos_mutex.o(i.tos_mutex_create) for tos_mutex_create
+    cmsis_os.o(i.osMutexDelete) refers to tos_mutex.o(i.tos_mutex_destroy) for tos_mutex_destroy
+    cmsis_os.o(i.osMutexDelete) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osMutexRelease) refers to tos_mutex.o(i.tos_mutex_post) for tos_mutex_post
+    cmsis_os.o(i.osMutexRelease) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osMutexWait) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    cmsis_os.o(i.osMutexWait) refers to tos_mutex.o(i.tos_mutex_pend_timed) for tos_mutex_pend_timed
+    cmsis_os.o(i.osMutexWait) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osPoolAlloc) refers to tos_mmblk.o(i.tos_mmblk_alloc) for tos_mmblk_alloc
+    cmsis_os.o(i.osPoolCAlloc) refers to tos_mmblk.o(i.tos_mmblk_alloc) for tos_mmblk_alloc
+    cmsis_os.o(i.osPoolCAlloc) refers to memseta.o(.text) for __aeabi_memclr
+    cmsis_os.o(i.osPoolCreate) refers to tos_mmblk.o(i.tos_mmblk_pool_create) for tos_mmblk_pool_create
+    cmsis_os.o(i.osPoolFree) refers to tos_mmblk.o(i.tos_mmblk_free) for tos_mmblk_free
+    cmsis_os.o(i.osPoolFree) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osSemaphoreCreate) refers to tos_sem.o(i.tos_sem_create) for tos_sem_create
+    cmsis_os.o(i.osSemaphoreDelete) refers to tos_sem.o(i.tos_sem_destroy) for tos_sem_destroy
+    cmsis_os.o(i.osSemaphoreDelete) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osSemaphoreRelease) refers to tos_sem.o(i.tos_sem_post) for tos_sem_post
+    cmsis_os.o(i.osSemaphoreRelease) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osSemaphoreWait) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    cmsis_os.o(i.osSemaphoreWait) refers to tos_sem.o(i.tos_sem_pend) for tos_sem_pend
+    cmsis_os.o(i.osThreadCreate) refers to cmsis_os.o(i.priority_cmsis2knl) for priority_cmsis2knl
+    cmsis_os.o(i.osThreadCreate) refers to tos_task.o(i.tos_task_create) for tos_task_create
+    cmsis_os.o(i.osThreadGetId) refers to tos_global.o(.data) for k_curr_task
+    cmsis_os.o(i.osThreadGetPriority) refers to cmsis_os.o(i.priority_knl2cmsis) for priority_knl2cmsis
+    cmsis_os.o(i.osThreadSetPriority) refers to cmsis_os.o(i.priority_cmsis2knl) for priority_cmsis2knl
+    cmsis_os.o(i.osThreadSetPriority) refers to tos_task.o(i.tos_task_prio_change) for tos_task_prio_change
+    cmsis_os.o(i.osThreadSetPriority) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osThreadTerminate) refers to tos_task.o(i.tos_task_destroy) for tos_task_destroy
+    cmsis_os.o(i.osThreadTerminate) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osThreadYield) refers to tos_task.o(i.tos_task_yield) for tos_task_yield
+    cmsis_os.o(i.osTimerCreate) refers to tos_timer.o(i.tos_timer_create) for tos_timer_create
+    cmsis_os.o(i.osTimerDelete) refers to tos_timer.o(i.tos_timer_destroy) for tos_timer_destroy
+    cmsis_os.o(i.osTimerDelete) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osTimerStart) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    cmsis_os.o(i.osTimerStart) refers to tos_timer.o(i.tos_timer_start) for tos_timer_start
+    cmsis_os.o(i.osTimerStart) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osTimerStop) refers to tos_timer.o(i.tos_timer_stop) for tos_timer_stop
+    cmsis_os.o(i.osTimerStop) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    hello_world.o(i.application_entry) refers to tos_task.o(i.tos_task_create) for tos_task_create
+    hello_world.o(i.application_entry) refers to hello_world.o(.bss) for task1_stk
+    hello_world.o(i.application_entry) refers to hello_world.o(i.task1_entry) for task1_entry
+    hello_world.o(i.application_entry) refers to hello_world.o(i.task2_entry) for task2_entry
+    hello_world.o(i.task1_entry) refers to printf5.o(i.__0printf$5) for __2printf
+    hello_world.o(i.task1_entry) refers to tos_task.o(i.tos_task_delay) for tos_task_delay
+    hello_world.o(i.task2_entry) refers to printf5.o(i.__0printf$5) for __2printf
+    hello_world.o(i.task2_entry) refers to tos_task.o(i.tos_task_delay) for tos_task_delay
+    main.o(i.main) refers to printf5.o(i.__0printf$5) for __2printf
+    main.o(i.main) refers to tos_sys.o(i.tos_knl_init) for tos_knl_init
+    main.o(i.main) refers to tos_task.o(i.tos_task_create) for tos_task_create
+    main.o(i.main) refers to tos_sys.o(i.tos_knl_start) for tos_knl_start
+    main.o(i.main) refers to main.o(.bss) for application_task_stk
+    main.o(i.main) refers to hello_world.o(i.application_entry) for application_entry
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry8b.o(.ARM.Collect$$$$0000000A) for _main_cpp_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry9a.o(.ARM.Collect$$$$0000000B) for _main_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    uldiv.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+    uldiv.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    printfb.o(i.__0fprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0fprintf$bare) refers to fputc.o(i.fputc) for fputc
+    printfb.o(i.__0printf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0printf$bare) refers to fputc.o(i.fputc) for fputc
+    printfb.o(i.__0printf$bare) refers to stdout.o(.data) for __stdout
+    printfb.o(i.__0snprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0snprintf$bare) refers to printfb.o(i._snputc) for _snputc
+    printfb.o(i.__0sprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0sprintf$bare) refers to printfb.o(i._sputc) for _sputc
+    printfb.o(i.__0vfprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vfprintf$bare) refers to fputc.o(i.fputc) for fputc
+    printfb.o(i.__0vprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vprintf$bare) refers to fputc.o(i.fputc) for fputc
+    printfb.o(i.__0vprintf$bare) refers to stdout.o(.data) for __stdout
+    printfb.o(i.__0vsnprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vsnprintf$bare) refers to printfb.o(i._snputc) for _snputc
+    printfb.o(i.__0vsprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vsprintf$bare) refers to printfb.o(i._sputc) for _sputc
+    printf0.o(i.__0fprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0fprintf$0) refers to fputc.o(i.fputc) for fputc
+    printf0.o(i.__0printf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0printf$0) refers to fputc.o(i.fputc) for fputc
+    printf0.o(i.__0printf$0) refers to stdout.o(.data) for __stdout
+    printf0.o(i.__0snprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0snprintf$0) refers to printf0.o(i._snputc) for _snputc
+    printf0.o(i.__0sprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0sprintf$0) refers to printf0.o(i._sputc) for _sputc
+    printf0.o(i.__0vfprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vfprintf$0) refers to fputc.o(i.fputc) for fputc
+    printf0.o(i.__0vprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vprintf$0) refers to fputc.o(i.fputc) for fputc
+    printf0.o(i.__0vprintf$0) refers to stdout.o(.data) for __stdout
+    printf0.o(i.__0vsnprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vsnprintf$0) refers to printf0.o(i._snputc) for _snputc
+    printf0.o(i.__0vsprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vsprintf$0) refers to printf0.o(i._sputc) for _sputc
+    printf1.o(i.__0fprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0fprintf$1) refers to fputc.o(i.fputc) for fputc
+    printf1.o(i.__0printf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0printf$1) refers to fputc.o(i.fputc) for fputc
+    printf1.o(i.__0printf$1) refers to stdout.o(.data) for __stdout
+    printf1.o(i.__0snprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0snprintf$1) refers to printf1.o(i._snputc) for _snputc
+    printf1.o(i.__0sprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0sprintf$1) refers to printf1.o(i._sputc) for _sputc
+    printf1.o(i.__0vfprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vfprintf$1) refers to fputc.o(i.fputc) for fputc
+    printf1.o(i.__0vprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vprintf$1) refers to fputc.o(i.fputc) for fputc
+    printf1.o(i.__0vprintf$1) refers to stdout.o(.data) for __stdout
+    printf1.o(i.__0vsnprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vsnprintf$1) refers to printf1.o(i._snputc) for _snputc
+    printf1.o(i.__0vsprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vsprintf$1) refers to printf1.o(i._sputc) for _sputc
+    printf1.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf2.o(i.__0fprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0fprintf$2) refers to fputc.o(i.fputc) for fputc
+    printf2.o(i.__0printf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0printf$2) refers to fputc.o(i.fputc) for fputc
+    printf2.o(i.__0printf$2) refers to stdout.o(.data) for __stdout
+    printf2.o(i.__0snprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0snprintf$2) refers to printf2.o(i._snputc) for _snputc
+    printf2.o(i.__0sprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0sprintf$2) refers to printf2.o(i._sputc) for _sputc
+    printf2.o(i.__0vfprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vfprintf$2) refers to fputc.o(i.fputc) for fputc
+    printf2.o(i.__0vprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vprintf$2) refers to fputc.o(i.fputc) for fputc
+    printf2.o(i.__0vprintf$2) refers to stdout.o(.data) for __stdout
+    printf2.o(i.__0vsnprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vsnprintf$2) refers to printf2.o(i._snputc) for _snputc
+    printf2.o(i.__0vsprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vsprintf$2) refers to printf2.o(i._sputc) for _sputc
+    printf3.o(i.__0fprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0fprintf$3) refers to fputc.o(i.fputc) for fputc
+    printf3.o(i.__0printf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0printf$3) refers to fputc.o(i.fputc) for fputc
+    printf3.o(i.__0printf$3) refers to stdout.o(.data) for __stdout
+    printf3.o(i.__0snprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0snprintf$3) refers to printf3.o(i._snputc) for _snputc
+    printf3.o(i.__0sprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0sprintf$3) refers to printf3.o(i._sputc) for _sputc
+    printf3.o(i.__0vfprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vfprintf$3) refers to fputc.o(i.fputc) for fputc
+    printf3.o(i.__0vprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vprintf$3) refers to fputc.o(i.fputc) for fputc
+    printf3.o(i.__0vprintf$3) refers to stdout.o(.data) for __stdout
+    printf3.o(i.__0vsnprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vsnprintf$3) refers to printf3.o(i._snputc) for _snputc
+    printf3.o(i.__0vsprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vsprintf$3) refers to printf3.o(i._sputc) for _sputc
+    printf3.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf4.o(i.__0fprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0fprintf$4) refers to fputc.o(i.fputc) for fputc
+    printf4.o(i.__0printf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0printf$4) refers to fputc.o(i.fputc) for fputc
+    printf4.o(i.__0printf$4) refers to stdout.o(.data) for __stdout
+    printf4.o(i.__0snprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0snprintf$4) refers to printf4.o(i._snputc) for _snputc
+    printf4.o(i.__0sprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0sprintf$4) refers to printf4.o(i._sputc) for _sputc
+    printf4.o(i.__0vfprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vfprintf$4) refers to fputc.o(i.fputc) for fputc
+    printf4.o(i.__0vprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vprintf$4) refers to fputc.o(i.fputc) for fputc
+    printf4.o(i.__0vprintf$4) refers to stdout.o(.data) for __stdout
+    printf4.o(i.__0vsnprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vsnprintf$4) refers to printf4.o(i._snputc) for _snputc
+    printf4.o(i.__0vsprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vsprintf$4) refers to printf4.o(i._sputc) for _sputc
+    printf4.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf5.o(i.__0fprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0fprintf$5) refers to fputc.o(i.fputc) for fputc
+    printf5.o(i.__0printf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0printf$5) refers to fputc.o(i.fputc) for fputc
+    printf5.o(i.__0printf$5) refers to stdout.o(.data) for __stdout
+    printf5.o(i.__0snprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0snprintf$5) refers to printf5.o(i._snputc) for _snputc
+    printf5.o(i.__0sprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0sprintf$5) refers to printf5.o(i._sputc) for _sputc
+    printf5.o(i.__0vfprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vfprintf$5) refers to fputc.o(i.fputc) for fputc
+    printf5.o(i.__0vprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vprintf$5) refers to fputc.o(i.fputc) for fputc
+    printf5.o(i.__0vprintf$5) refers to stdout.o(.data) for __stdout
+    printf5.o(i.__0vsnprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vsnprintf$5) refers to printf5.o(i._snputc) for _snputc
+    printf5.o(i.__0vsprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vsprintf$5) refers to printf5.o(i._sputc) for _sputc
+    printf5.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf6.o(i.__0fprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0fprintf$6) refers to fputc.o(i.fputc) for fputc
+    printf6.o(i.__0printf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0printf$6) refers to fputc.o(i.fputc) for fputc
+    printf6.o(i.__0printf$6) refers to stdout.o(.data) for __stdout
+    printf6.o(i.__0snprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0snprintf$6) refers to printf6.o(i._snputc) for _snputc
+    printf6.o(i.__0sprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0sprintf$6) refers to printf6.o(i._sputc) for _sputc
+    printf6.o(i.__0vfprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vfprintf$6) refers to fputc.o(i.fputc) for fputc
+    printf6.o(i.__0vprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vprintf$6) refers to fputc.o(i.fputc) for fputc
+    printf6.o(i.__0vprintf$6) refers to stdout.o(.data) for __stdout
+    printf6.o(i.__0vsnprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vsnprintf$6) refers to printf6.o(i._snputc) for _snputc
+    printf6.o(i.__0vsprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vsprintf$6) refers to printf6.o(i._sputc) for _sputc
+    printf6.o(i._printf_core) refers to printf6.o(i._printf_pre_padding) for _printf_pre_padding
+    printf6.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf6.o(i._printf_core) refers to printf6.o(i._printf_post_padding) for _printf_post_padding
+    printf7.o(i.__0fprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0fprintf$7) refers to fputc.o(i.fputc) for fputc
+    printf7.o(i.__0printf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0printf$7) refers to fputc.o(i.fputc) for fputc
+    printf7.o(i.__0printf$7) refers to stdout.o(.data) for __stdout
+    printf7.o(i.__0snprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0snprintf$7) refers to printf7.o(i._snputc) for _snputc
+    printf7.o(i.__0sprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0sprintf$7) refers to printf7.o(i._sputc) for _sputc
+    printf7.o(i.__0vfprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vfprintf$7) refers to fputc.o(i.fputc) for fputc
+    printf7.o(i.__0vprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vprintf$7) refers to fputc.o(i.fputc) for fputc
+    printf7.o(i.__0vprintf$7) refers to stdout.o(.data) for __stdout
+    printf7.o(i.__0vsnprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vsnprintf$7) refers to printf7.o(i._snputc) for _snputc
+    printf7.o(i.__0vsprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vsprintf$7) refers to printf7.o(i._sputc) for _sputc
+    printf7.o(i._printf_core) refers to printf7.o(i._printf_pre_padding) for _printf_pre_padding
+    printf7.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf7.o(i._printf_core) refers to printf7.o(i._printf_post_padding) for _printf_post_padding
+    printf8.o(i.__0fprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0fprintf$8) refers to fputc.o(i.fputc) for fputc
+    printf8.o(i.__0printf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0printf$8) refers to fputc.o(i.fputc) for fputc
+    printf8.o(i.__0printf$8) refers to stdout.o(.data) for __stdout
+    printf8.o(i.__0snprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0snprintf$8) refers to printf8.o(i._snputc) for _snputc
+    printf8.o(i.__0sprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0sprintf$8) refers to printf8.o(i._sputc) for _sputc
+    printf8.o(i.__0vfprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vfprintf$8) refers to fputc.o(i.fputc) for fputc
+    printf8.o(i.__0vprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vprintf$8) refers to fputc.o(i.fputc) for fputc
+    printf8.o(i.__0vprintf$8) refers to stdout.o(.data) for __stdout
+    printf8.o(i.__0vsnprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vsnprintf$8) refers to printf8.o(i._snputc) for _snputc
+    printf8.o(i.__0vsprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vsprintf$8) refers to printf8.o(i._sputc) for _sputc
+    printf8.o(i._printf_core) refers to printf8.o(i._printf_pre_padding) for _printf_pre_padding
+    printf8.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf8.o(i._printf_core) refers to printf8.o(i._printf_post_padding) for _printf_post_padding
+    printfa.o(i.__0fprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0fprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0fprintf) refers to fputc.o(i.fputc) for fputc
+    printfa.o(i.__0printf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0printf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0printf) refers to fputc.o(i.fputc) for fputc
+    printfa.o(i.__0printf) refers to stdout.o(.data) for __stdout
+    printfa.o(i.__0snprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0snprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0snprintf) refers to printfa.o(i._snputc) for _snputc
+    printfa.o(i.__0sprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0sprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0sprintf) refers to printfa.o(i._sputc) for _sputc
+    printfa.o(i.__0vfprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vfprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vfprintf) refers to fputc.o(i.fputc) for fputc
+    printfa.o(i.__0vprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vprintf) refers to fputc.o(i.fputc) for fputc
+    printfa.o(i.__0vprintf) refers to stdout.o(.data) for __stdout
+    printfa.o(i.__0vsnprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vsnprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vsnprintf) refers to printfa.o(i._snputc) for _snputc
+    printfa.o(i.__0vsprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vsprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vsprintf) refers to printfa.o(i._sputc) for _sputc
+    printfa.o(i._fp_digits) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._fp_digits) refers to dmul.o(.text) for __aeabi_dmul
+    printfa.o(i._fp_digits) refers to ddiv.o(.text) for __aeabi_ddiv
+    printfa.o(i._fp_digits) refers to cdrcmple.o(.text) for __aeabi_cdrcmple
+    printfa.o(i._fp_digits) refers to dadd.o(.text) for __aeabi_dadd
+    printfa.o(i._fp_digits) refers to dfixul.o(.text) for __aeabi_d2ulz
+    printfa.o(i._fp_digits) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printfa.o(i._printf_core) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._printf_core) refers to printfa.o(i._printf_pre_padding) for _printf_pre_padding
+    printfa.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printfa.o(i._printf_core) refers to printfa.o(i._printf_post_padding) for _printf_post_padding
+    printfa.o(i._printf_core) refers to printfa.o(i._fp_digits) for _fp_digits
+    printfa.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printfa.o(i._printf_post_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._printf_pre_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._snputc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._sputc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
+    entry2.o(.ARM.Collect$$$$00002712) refers to startup_armcm4.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to startup_armcm4.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
+    entry9a.o(.ARM.Collect$$$$0000000B) refers to main.o(i.main) for main
+    entry9b.o(.ARM.Collect$$$$0000000C) refers to main.o(i.main) for main
+    fputc.o(i.fputc) refers (Special) to iusesemip.o(.text) for __I$use$semihosting$fputc
+    fputc.o(i.fputc) refers (Special) to semi.o(.text) for __semihosting_library_function
+    dadd.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    dadd.o(.text) refers to llsshr.o(.text) for __aeabi_lasr
+    dadd.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    dmul.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    ddiv.o(.text) refers to depilogue.o(.text) for _double_round
+    dfixul.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+    dfixul.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
+    depilogue.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    depilogue.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing startup_armcm4.o(HEAP), (3072 bytes).
+    Removing system_armcm4.o(.rev16_text), (4 bytes).
+    Removing system_armcm4.o(.revsh_text), (4 bytes).
+    Removing system_armcm4.o(.rrx_text), (6 bytes).
+    Removing system_armcm4.o(i.SystemCoreClockUpdate), (16 bytes).
+    Removing tos_cpu.o(.rev16_text), (4 bytes).
+    Removing tos_cpu.o(.revsh_text), (4 bytes).
+    Removing tos_cpu.o(.rrx_text), (6 bytes).
+    Removing tos_cpu.o(i.cpu_irq_context_switch), (8 bytes).
+    Removing tos_cpu.o(i.cpu_reset), (8 bytes).
+    Removing tos_cpu.o(i.tos_cpu_int_disable), (8 bytes).
+    Removing tos_cpu.o(i.tos_cpu_int_enable), (8 bytes).
+    Removing tos_fault.o(.rev16_text), (4 bytes).
+    Removing tos_fault.o(.revsh_text), (4 bytes).
+    Removing tos_fault.o(.rrx_text), (6 bytes).
+    Removing port_c.o(.rev16_text), (4 bytes).
+    Removing port_c.o(.revsh_text), (4 bytes).
+    Removing port_c.o(.rrx_text), (6 bytes).
+    Removing port_c.o(i.port_cpu_reset), (44 bytes).
+    Removing tos_barrier.o(.rev16_text), (4 bytes).
+    Removing tos_barrier.o(.revsh_text), (4 bytes).
+    Removing tos_barrier.o(.rrx_text), (6 bytes).
+    Removing tos_binary_heap.o(.rev16_text), (4 bytes).
+    Removing tos_binary_heap.o(.revsh_text), (4 bytes).
+    Removing tos_binary_heap.o(.rrx_text), (6 bytes).
+    Removing tos_binary_heap.o(i.bin_heap_do_percolate_up), (128 bytes).
+    Removing tos_binary_heap.o(i.bin_heap_percolate_down), (188 bytes).
+    Removing tos_binary_heap.o(i.bin_heap_percolate_up), (20 bytes).
+    Removing tos_binary_heap.o(i.knl_object_init), (4 bytes).
+    Removing tos_binary_heap.o(i.knl_object_verify), (16 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_create), (118 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_create_dyn), (112 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_destroy), (94 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_destroy_dyn), (102 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_flush), (76 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_is_empty), (82 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_is_full), (86 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_pop), (162 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_push), (164 bytes).
+    Removing tos_bitmap.o(.rev16_text), (4 bytes).
+    Removing tos_bitmap.o(.revsh_text), (4 bytes).
+    Removing tos_bitmap.o(.rrx_text), (6 bytes).
+    Removing tos_bitmap.o(i.knl_object_init), (4 bytes).
+    Removing tos_bitmap.o(i.knl_object_verify), (16 bytes).
+    Removing tos_bitmap.o(i.tos_bitmap_create_empty), (78 bytes).
+    Removing tos_bitmap.o(i.tos_bitmap_create_full), (80 bytes).
+    Removing tos_bitmap.o(i.tos_bitmap_destroy), (58 bytes).
+    Removing tos_bitmap.o(i.tos_bitmap_is_reset), (72 bytes).
+    Removing tos_bitmap.o(i.tos_bitmap_is_set), (86 bytes).
+    Removing tos_bitmap.o(i.tos_bitmap_lsb), (102 bytes).
+    Removing tos_bitmap.o(i.tos_bitmap_reset), (92 bytes).
+    Removing tos_bitmap.o(i.tos_bitmap_set), (92 bytes).
+    Removing tos_char_fifo.o(.rev16_text), (4 bytes).
+    Removing tos_char_fifo.o(.revsh_text), (4 bytes).
+    Removing tos_char_fifo.o(.rrx_text), (6 bytes).
+    Removing tos_char_fifo.o(i.knl_object_init), (4 bytes).
+    Removing tos_char_fifo.o(i.knl_object_verify), (16 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_create), (94 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_create_dyn), (66 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_destroy), (98 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_destroy_dyn), (100 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_flush), (54 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_is_empty), (50 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_is_full), (50 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_pop), (60 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_pop_stream), (122 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_push), (58 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_push_stream), (116 bytes).
+    Removing tos_completion.o(.rev16_text), (4 bytes).
+    Removing tos_completion.o(.revsh_text), (4 bytes).
+    Removing tos_completion.o(.rrx_text), (6 bytes).
+    Removing tos_countdownlatch.o(.rev16_text), (4 bytes).
+    Removing tos_countdownlatch.o(.revsh_text), (4 bytes).
+    Removing tos_countdownlatch.o(.rrx_text), (6 bytes).
+    Removing tos_event.o(.rev16_text), (4 bytes).
+    Removing tos_event.o(.revsh_text), (4 bytes).
+    Removing tos_event.o(.rrx_text), (6 bytes).
+    Removing tos_event.o(i.event_do_post), (176 bytes).
+    Removing tos_event.o(i.event_is_match), (50 bytes).
+    Removing tos_event.o(i.knl_object_verify), (16 bytes).
+    Removing tos_event.o(i.tos_event_create), (46 bytes).
+    Removing tos_event.o(i.tos_event_destroy), (102 bytes).
+    Removing tos_event.o(i.tos_event_pend), (332 bytes).
+    Removing tos_event.o(i.tos_event_post), (18 bytes).
+    Removing tos_event.o(i.tos_event_post_keep), (18 bytes).
+    Removing tos_global.o(.rev16_text), (4 bytes).
+    Removing tos_global.o(.revsh_text), (4 bytes).
+    Removing tos_global.o(.rrx_text), (6 bytes).
+    Removing tos_mail_queue.o(.rev16_text), (4 bytes).
+    Removing tos_mail_queue.o(.revsh_text), (4 bytes).
+    Removing tos_mail_queue.o(.rrx_text), (6 bytes).
+    Removing tos_message_queue.o(.rev16_text), (4 bytes).
+    Removing tos_message_queue.o(.revsh_text), (4 bytes).
+    Removing tos_message_queue.o(.rrx_text), (6 bytes).
+    Removing tos_mmblk.o(.rev16_text), (4 bytes).
+    Removing tos_mmblk.o(.revsh_text), (4 bytes).
+    Removing tos_mmblk.o(.rrx_text), (6 bytes).
+    Removing tos_mmblk.o(i.knl_object_verify), (16 bytes).
+    Removing tos_mmblk.o(i.tos_mmblk_alloc), (114 bytes).
+    Removing tos_mmblk.o(i.tos_mmblk_free), (130 bytes).
+    Removing tos_mmblk.o(i.tos_mmblk_pool_create), (146 bytes).
+    Removing tos_mmblk.o(i.tos_mmblk_pool_destroy), (68 bytes).
+    Removing tos_mmheap.o(.rev16_text), (4 bytes).
+    Removing tos_mmheap.o(.revsh_text), (4 bytes).
+    Removing tos_mmheap.o(.rrx_text), (6 bytes).
+    Removing tos_mmheap.o(i.__ffs), (20 bytes).
+    Removing tos_mmheap.o(i.adjust_request_size), (48 bytes).
+    Removing tos_mmheap.o(i.align_ptr), (12 bytes).
+    Removing tos_mmheap.o(i.blk_absorb), (30 bytes).
+    Removing tos_mmheap.o(i.blk_can_split), (28 bytes).
+    Removing tos_mmheap.o(i.blk_locate_free), (58 bytes).
+    Removing tos_mmheap.o(i.blk_mark_as_free), (26 bytes).
+    Removing tos_mmheap.o(i.blk_mark_as_used), (26 bytes).
+    Removing tos_mmheap.o(i.blk_merge_next), (42 bytes).
+    Removing tos_mmheap.o(i.blk_merge_prev), (40 bytes).
+    Removing tos_mmheap.o(i.blk_prepare_used), (34 bytes).
+    Removing tos_mmheap.o(i.blk_remove), (32 bytes).
+    Removing tos_mmheap.o(i.blk_search_suitable), (108 bytes).
+    Removing tos_mmheap.o(i.blk_split), (62 bytes).
+    Removing tos_mmheap.o(i.blk_trim_free), (46 bytes).
+    Removing tos_mmheap.o(i.blk_trim_free_leading), (50 bytes).
+    Removing tos_mmheap.o(i.blk_trim_used), (48 bytes).
+    Removing tos_mmheap.o(i.mapping_search), (46 bytes).
+    Removing tos_mmheap.o(i.mmheap_init), (10 bytes).
+    Removing tos_mmheap.o(i.mmheap_pool_unrecord), (88 bytes).
+    Removing tos_mmheap.o(i.remove_free_block), (96 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_aligned_alloc), (164 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_alloc), (48 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_calloc), (32 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_check), (92 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_free), (48 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_pool_check), (138 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_pool_rmv), (92 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_realloc), (178 bytes).
+    Removing tos_mutex.o(.rev16_text), (4 bytes).
+    Removing tos_mutex.o(.revsh_text), (4 bytes).
+    Removing tos_mutex.o(.rrx_text), (6 bytes).
+    Removing tos_mutex.o(i.knl_object_init), (4 bytes).
+    Removing tos_mutex.o(i.knl_object_verify), (16 bytes).
+    Removing tos_mutex.o(i.mutex_fresh_owner_mark), (42 bytes).
+    Removing tos_mutex.o(i.tos_list_init), (6 bytes).
+    Removing tos_mutex.o(i.tos_mutex_create), (86 bytes).
+    Removing tos_mutex.o(i.tos_mutex_create_dyn), (114 bytes).
+    Removing tos_mutex.o(i.tos_mutex_destroy), (166 bytes).
+    Removing tos_mutex.o(i.tos_mutex_pend), (18 bytes).
+    Removing tos_mutex.o(i.tos_mutex_pend_timed), (300 bytes).
+    Removing tos_mutex.o(i.tos_mutex_post), (240 bytes).
+    Removing tos_pend.o(.rev16_text), (4 bytes).
+    Removing tos_pend.o(.revsh_text), (4 bytes).
+    Removing tos_pend.o(.rrx_text), (6 bytes).
+    Removing tos_pend.o(i.pend_highest_pending_task_get), (8 bytes).
+    Removing tos_pend.o(i.pend_is_nopending), (12 bytes).
+    Removing tos_pend.o(i.pend_object_deinit), (12 bytes).
+    Removing tos_pend.o(i.pend_object_init), (12 bytes).
+    Removing tos_pend.o(i.pend_state2errno), (46 bytes).
+    Removing tos_pend.o(i.pend_task_block), (60 bytes).
+    Removing tos_pend.o(i.pend_wakeup), (30 bytes).
+    Removing tos_pend.o(i.pend_wakeup_one), (20 bytes).
+    Removing tos_pend.o(i.tos_list_init), (6 bytes).
+    Removing tos_priority_mail_queue.o(.rev16_text), (4 bytes).
+    Removing tos_priority_mail_queue.o(.revsh_text), (4 bytes).
+    Removing tos_priority_mail_queue.o(.rrx_text), (6 bytes).
+    Removing tos_priority_message_queue.o(.rev16_text), (4 bytes).
+    Removing tos_priority_message_queue.o(.revsh_text), (4 bytes).
+    Removing tos_priority_message_queue.o(.rrx_text), (6 bytes).
+    Removing tos_priority_queue.o(.rev16_text), (4 bytes).
+    Removing tos_priority_queue.o(.revsh_text), (4 bytes).
+    Removing tos_priority_queue.o(.rrx_text), (6 bytes).
+    Removing tos_priority_queue.o(i.knl_object_verify), (16 bytes).
+    Removing tos_priority_queue.o(i.prio_q_do_dequeue), (64 bytes).
+    Removing tos_priority_queue.o(i.prio_q_do_enqueue), (58 bytes).
+    Removing tos_priority_queue.o(i.prio_q_mgr_entry_cmp), (24 bytes).
+    Removing tos_priority_queue.o(i.prio_q_pool_mgr_deinit), (8 bytes).
+    Removing tos_priority_queue.o(i.prio_q_pool_mgr_init), (38 bytes).
+    Removing tos_priority_queue.o(i.prio_q_pool_mgr_reset), (38 bytes).
+    Removing tos_priority_queue.o(i.prio_q_pool_mgr_slot_alloc), (34 bytes).
+    Removing tos_priority_queue.o(i.prio_q_pool_mgr_slot_free), (14 bytes).
+    Removing tos_priority_queue.o(i.prio_q_prio_mgr_deinit), (16 bytes).
+    Removing tos_priority_queue.o(i.prio_q_prio_mgr_init), (32 bytes).
+    Removing tos_priority_queue.o(i.prio_q_prio_mgr_reset), (12 bytes).
+    Removing tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue), (124 bytes).
+    Removing tos_priority_queue.o(i.prio_q_prio_mgr_slot_enqueue), (88 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_create), (146 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_create_dyn), (124 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_dequeue), (142 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_destroy), (108 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_destroy_dyn), (122 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_enqueue), (216 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_flush), (92 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_is_empty), (82 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_is_full), (86 bytes).
+    Removing tos_priority_queue.o(.constdata), (77 bytes).
+    Removing tos_ring_queue.o(.rev16_text), (4 bytes).
+    Removing tos_ring_queue.o(.revsh_text), (4 bytes).
+    Removing tos_ring_queue.o(.rrx_text), (6 bytes).
+    Removing tos_ring_queue.o(i.knl_object_init), (4 bytes).
+    Removing tos_ring_queue.o(i.knl_object_verify), (16 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_create), (90 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_create_dyn), (86 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_dequeue), (182 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_destroy), (96 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_destroy_dyn), (104 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_enqueue), (184 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_flush), (80 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_is_empty), (82 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_is_full), (86 bytes).
+    Removing tos_robin.o(.rev16_text), (4 bytes).
+    Removing tos_robin.o(.revsh_text), (4 bytes).
+    Removing tos_robin.o(.rrx_text), (6 bytes).
+    Removing tos_robin.o(i.robin_sched), (172 bytes).
+    Removing tos_robin.o(i.tos_robin_default_timeslice_config), (48 bytes).
+    Removing tos_robin.o(i.tos_robin_timeslice_set), (68 bytes).
+    Removing tos_rwlock.o(.rev16_text), (4 bytes).
+    Removing tos_rwlock.o(.revsh_text), (4 bytes).
+    Removing tos_rwlock.o(.rrx_text), (6 bytes).
+    Removing tos_rwlock.o(i.knl_object_verify), (16 bytes).
+    Removing tos_rwlock.o(i.tos_rwlock_create), (84 bytes).
+    Removing tos_rwlock.o(i.tos_rwlock_destroy), (88 bytes).
+    Removing tos_rwlock.o(i.tos_rwlock_post), (120 bytes).
+    Removing tos_rwlock.o(i.tos_rwlock_rpend), (18 bytes).
+    Removing tos_rwlock.o(i.tos_rwlock_rpend_timed), (274 bytes).
+    Removing tos_rwlock.o(i.tos_rwlock_rpend_try), (116 bytes).
+    Removing tos_rwlock.o(i.tos_rwlock_rpost), (100 bytes).
+    Removing tos_rwlock.o(i.tos_rwlock_wpend), (18 bytes).
+    Removing tos_rwlock.o(i.tos_rwlock_wpend_timed), (278 bytes).
+    Removing tos_rwlock.o(i.tos_rwlock_wpend_try), (98 bytes).
+    Removing tos_rwlock.o(i.tos_rwlock_wpost), (94 bytes).
+    Removing tos_sched.o(.rev16_text), (4 bytes).
+    Removing tos_sched.o(.revsh_text), (4 bytes).
+    Removing tos_sched.o(.rrx_text), (6 bytes).
+    Removing tos_sched.o(i.readyqueue_first_task_get), (32 bytes).
+    Removing tos_sched.o(i.readyqueue_is_prio_onlyone), (32 bytes).
+    Removing tos_sched.o(i.readyqueue_move_head_to_tail), (52 bytes).
+    Removing tos_sem.o(.rev16_text), (4 bytes).
+    Removing tos_sem.o(.revsh_text), (4 bytes).
+    Removing tos_sem.o(.rrx_text), (6 bytes).
+    Removing tos_sem.o(i.knl_object_init), (4 bytes).
+    Removing tos_sem.o(i.knl_object_verify), (16 bytes).
+    Removing tos_sem.o(i.sem_do_post), (140 bytes).
+    Removing tos_sem.o(i.tos_sem_create), (20 bytes).
+    Removing tos_sem.o(i.tos_sem_create_dyn), (20 bytes).
+    Removing tos_sem.o(i.tos_sem_create_max), (66 bytes).
+    Removing tos_sem.o(i.tos_sem_create_max_dyn), (122 bytes).
+    Removing tos_sem.o(i.tos_sem_destroy), (132 bytes).
+    Removing tos_sem.o(i.tos_sem_pend), (212 bytes).
+    Removing tos_sem.o(i.tos_sem_post), (14 bytes).
+    Removing tos_sem.o(i.tos_sem_post_all), (14 bytes).
+    Removing tos_stopwatch.o(.rev16_text), (4 bytes).
+    Removing tos_stopwatch.o(.revsh_text), (4 bytes).
+    Removing tos_stopwatch.o(.rrx_text), (6 bytes).
+    Removing tos_stopwatch.o(i.knl_object_verify), (16 bytes).
+    Removing tos_stopwatch.o(i.tos_stopwatch_countdown), (76 bytes).
+    Removing tos_stopwatch.o(i.tos_stopwatch_countdown_ms), (74 bytes).
+    Removing tos_stopwatch.o(i.tos_stopwatch_create), (40 bytes).
+    Removing tos_stopwatch.o(i.tos_stopwatch_delay), (38 bytes).
+    Removing tos_stopwatch.o(i.tos_stopwatch_delay_ms), (24 bytes).
+    Removing tos_stopwatch.o(i.tos_stopwatch_destroy), (64 bytes).
+    Removing tos_stopwatch.o(i.tos_stopwatch_is_expired), (70 bytes).
+    Removing tos_stopwatch.o(i.tos_stopwatch_remain), (86 bytes).
+    Removing tos_stopwatch.o(i.tos_stopwatch_remain_ms), (108 bytes).
+    Removing tos_sys.o(.rev16_text), (4 bytes).
+    Removing tos_sys.o(.revsh_text), (4 bytes).
+    Removing tos_sys.o(.rrx_text), (6 bytes).
+    Removing tos_sys.o(i.tos_knl_irq_enter), (48 bytes).
+    Removing tos_sys.o(i.tos_knl_irq_leave), (144 bytes).
+    Removing tos_sys.o(i.tos_knl_sched_lock), (92 bytes).
+    Removing tos_sys.o(i.tos_knl_sched_unlock), (96 bytes).
+    Removing tos_task.o(.rev16_text), (4 bytes).
+    Removing tos_task.o(.revsh_text), (4 bytes).
+    Removing tos_task.o(.rrx_text), (6 bytes).
+    Removing tos_task.o(i.task_default_walker), (392 bytes).
+    Removing tos_task.o(i.tos_task_curr_task_get), (52 bytes).
+    Removing tos_task.o(i.tos_task_delay_abort), (176 bytes).
+    Removing tos_task.o(i.tos_task_info_display), (16 bytes).
+    Removing tos_task.o(i.tos_task_resume), (158 bytes).
+    Removing tos_task.o(i.tos_task_suspend), (148 bytes).
+    Removing tos_task.o(i.tos_task_walkthru), (68 bytes).
+    Removing tos_tick.o(.rev16_text), (4 bytes).
+    Removing tos_tick.o(.revsh_text), (4 bytes).
+    Removing tos_tick.o(.rrx_text), (6 bytes).
+    Removing tos_tick.o(i.tick_next_expires_get), (76 bytes).
+    Removing tos_tick.o(i.tick_update), (196 bytes).
+    Removing tos_tick.o(i.tos_tick_handler), (52 bytes).
+    Removing tos_time.o(.rev16_text), (4 bytes).
+    Removing tos_time.o(.revsh_text), (4 bytes).
+    Removing tos_time.o(.rrx_text), (6 bytes).
+    Removing tos_time.o(i.tos_millisec2tick), (28 bytes).
+    Removing tos_time.o(i.tos_sleep_hmsm), (112 bytes).
+    Removing tos_time.o(i.tos_sleep_ms), (18 bytes).
+    Removing tos_time.o(i.tos_systick_get), (40 bytes).
+    Removing tos_time.o(i.tos_systick_set), (40 bytes).
+    Removing tos_time.o(i.tos_tick2millisec), (42 bytes).
+    Removing tos_timer.o(.rev16_text), (4 bytes).
+    Removing tos_timer.o(.revsh_text), (4 bytes).
+    Removing tos_timer.o(.rrx_text), (6 bytes).
+    Removing tos_timer.o(i.knl_object_verify), (16 bytes).
+    Removing tos_timer.o(i.timer_change), (152 bytes).
+    Removing tos_timer.o(i.timer_next_expires_get), (104 bytes).
+    Removing tos_timer.o(i.timer_place), (144 bytes).
+    Removing tos_timer.o(i.timer_takeoff), (116 bytes).
+    Removing tos_timer.o(i.timer_update), (136 bytes).
+    Removing tos_timer.o(i.tos_list_init), (6 bytes).
+    Removing tos_timer.o(i.tos_timer_create), (228 bytes).
+    Removing tos_timer.o(i.tos_timer_delay_change), (24 bytes).
+    Removing tos_timer.o(i.tos_timer_destroy), (122 bytes).
+    Removing tos_timer.o(i.tos_timer_period_change), (24 bytes).
+    Removing tos_timer.o(i.tos_timer_start), (160 bytes).
+    Removing tos_timer.o(i.tos_timer_stop), (104 bytes).
+    Removing cmsis_os.o(.rev16_text), (4 bytes).
+    Removing cmsis_os.o(.revsh_text), (4 bytes).
+    Removing cmsis_os.o(.rrx_text), (6 bytes).
+    Removing cmsis_os.o(i.errno_knl2cmsis), (12 bytes).
+    Removing cmsis_os.o(i.osDelay), (46 bytes).
+    Removing cmsis_os.o(i.osKernelInitialize), (14 bytes).
+    Removing cmsis_os.o(i.osKernelRunning), (8 bytes).
+    Removing cmsis_os.o(i.osKernelStart), (14 bytes).
+    Removing cmsis_os.o(i.osKernelSysTick), (8 bytes).
+    Removing cmsis_os.o(i.osMutexCreate), (28 bytes).
+    Removing cmsis_os.o(i.osMutexDelete), (18 bytes).
+    Removing cmsis_os.o(i.osMutexRelease), (18 bytes).
+    Removing cmsis_os.o(i.osMutexWait), (50 bytes).
+    Removing cmsis_os.o(i.osPoolAlloc), (28 bytes).
+    Removing cmsis_os.o(i.osPoolCAlloc), (36 bytes).
+    Removing cmsis_os.o(i.osPoolCreate), (34 bytes).
+    Removing cmsis_os.o(i.osPoolFree), (22 bytes).
+    Removing cmsis_os.o(i.osSemaphoreCreate), (32 bytes).
+    Removing cmsis_os.o(i.osSemaphoreDelete), (18 bytes).
+    Removing cmsis_os.o(i.osSemaphoreRelease), (18 bytes).
+    Removing cmsis_os.o(i.osSemaphoreWait), (58 bytes).
+    Removing cmsis_os.o(i.osThreadCreate), (66 bytes).
+    Removing cmsis_os.o(i.osThreadGetId), (12 bytes).
+    Removing cmsis_os.o(i.osThreadGetPriority), (20 bytes).
+    Removing cmsis_os.o(i.osThreadSetPriority), (34 bytes).
+    Removing cmsis_os.o(i.osThreadTerminate), (18 bytes).
+    Removing cmsis_os.o(i.osThreadYield), (10 bytes).
+    Removing cmsis_os.o(i.osTimerCreate), (74 bytes).
+    Removing cmsis_os.o(i.osTimerDelete), (18 bytes).
+    Removing cmsis_os.o(i.osTimerStart), (70 bytes).
+    Removing cmsis_os.o(i.osTimerStop), (18 bytes).
+    Removing cmsis_os.o(i.priority_cmsis2knl), (18 bytes).
+    Removing cmsis_os.o(i.priority_knl2cmsis), (8 bytes).
+    Removing hello_world.o(.rev16_text), (4 bytes).
+    Removing hello_world.o(.revsh_text), (4 bytes).
+    Removing hello_world.o(.rrx_text), (6 bytes).
+    Removing main.o(.rev16_text), (4 bytes).
+    Removing main.o(.revsh_text), (4 bytes).
+    Removing main.o(.rrx_text), (6 bytes).
+    Removing dadd.o(.text), (334 bytes).
+    Removing dmul.o(.text), (228 bytes).
+    Removing ddiv.o(.text), (222 bytes).
+    Removing dfixul.o(.text), (48 bytes).
+    Removing cdrcmple.o(.text), (48 bytes).
+    Removing depilogue.o(.text), (186 bytes).
+
+353 unused section(s) (total 21805 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    RESET                                    0x00000000   Section      960  startup_armcm4.o(RESET)
+    ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
+    ../clib/microlib/stdio/fputc.c           0x00000000   Number         0  fputc.o ABSOLUTE
+    ../clib/microlib/stdio/semi.s            0x00000000   Number         0  semi.o ABSOLUTE
+    ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdout.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
+    ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
+    ../clib/microlib/string/strncpy.c        0x00000000   Number         0  strncpy.o ABSOLUTE
+    ../clib/microlib/stubs.s                 0x00000000   Number         0  iusesemip.o ABSOLUTE
+    ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
+    ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
+    ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
+    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
+    ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\arch\arm\arm-v7m\common\tos_cpu.c 0x00000000   Number         0  tos_cpu.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\arch\arm\arm-v7m\common\tos_fault.c 0x00000000   Number         0  tos_fault.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\arch\arm\arm-v7m\cortex-m4\armcc\port_c.c 0x00000000   Number         0  port_c.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\arch\arm\arm-v7m\cortex-m4\armcc\port_s.S 0x00000000   Number         0  port_s.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_barrier.c 0x00000000   Number         0  tos_barrier.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_binary_heap.c 0x00000000   Number         0  tos_binary_heap.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_bitmap.c 0x00000000   Number         0  tos_bitmap.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_char_fifo.c 0x00000000   Number         0  tos_char_fifo.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_completion.c 0x00000000   Number         0  tos_completion.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_countdownlatch.c 0x00000000   Number         0  tos_countdownlatch.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_event.c 0x00000000   Number         0  tos_event.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_global.c 0x00000000   Number         0  tos_global.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_mail_queue.c 0x00000000   Number         0  tos_mail_queue.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_message_queue.c 0x00000000   Number         0  tos_message_queue.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_mmblk.c 0x00000000   Number         0  tos_mmblk.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_mmheap.c 0x00000000   Number         0  tos_mmheap.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_mutex.c 0x00000000   Number         0  tos_mutex.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_pend.c 0x00000000   Number         0  tos_pend.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_priority_mail_queue.c 0x00000000   Number         0  tos_priority_mail_queue.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_priority_message_queue.c 0x00000000   Number         0  tos_priority_message_queue.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_priority_queue.c 0x00000000   Number         0  tos_priority_queue.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_ring_queue.c 0x00000000   Number         0  tos_ring_queue.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_robin.c 0x00000000   Number         0  tos_robin.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_rwlock.c 0x00000000   Number         0  tos_rwlock.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_sched.c 0x00000000   Number         0  tos_sched.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_sem.c 0x00000000   Number         0  tos_sem.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_stopwatch.c 0x00000000   Number         0  tos_stopwatch.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_sys.c 0x00000000   Number         0  tos_sys.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_task.c 0x00000000   Number         0  tos_task.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_tick.c 0x00000000   Number         0  tos_tick.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_time.c 0x00000000   Number         0  tos_time.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\tos_timer.c 0x00000000   Number         0  tos_timer.o ABSOLUTE
+    D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\osal\cmsis_os\cmsis_os.c 0x00000000   Number         0  cmsis_os.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\arch\\arm\\arm-v7m\\common\\tos_cpu.c 0x00000000   Number         0  tos_cpu.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\arch\\arm\\arm-v7m\\common\\tos_fault.c 0x00000000   Number         0  tos_fault.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\arch\\arm\\arm-v7m\\cortex-m4\\armcc\\port_c.c 0x00000000   Number         0  port_c.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_barrier.c 0x00000000   Number         0  tos_barrier.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_binary_heap.c 0x00000000   Number         0  tos_binary_heap.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_bitmap.c 0x00000000   Number         0  tos_bitmap.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_char_fifo.c 0x00000000   Number         0  tos_char_fifo.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_completion.c 0x00000000   Number         0  tos_completion.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_countdownlatch.c 0x00000000   Number         0  tos_countdownlatch.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_event.c 0x00000000   Number         0  tos_event.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_global.c 0x00000000   Number         0  tos_global.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_mail_queue.c 0x00000000   Number         0  tos_mail_queue.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_message_queue.c 0x00000000   Number         0  tos_message_queue.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_mmblk.c 0x00000000   Number         0  tos_mmblk.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_mmheap.c 0x00000000   Number         0  tos_mmheap.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_mutex.c 0x00000000   Number         0  tos_mutex.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_pend.c 0x00000000   Number         0  tos_pend.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_priority_mail_queue.c 0x00000000   Number         0  tos_priority_mail_queue.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_priority_message_queue.c 0x00000000   Number         0  tos_priority_message_queue.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_priority_queue.c 0x00000000   Number         0  tos_priority_queue.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_ring_queue.c 0x00000000   Number         0  tos_ring_queue.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_robin.c 0x00000000   Number         0  tos_robin.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_rwlock.c 0x00000000   Number         0  tos_rwlock.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_sched.c 0x00000000   Number         0  tos_sched.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_sem.c 0x00000000   Number         0  tos_sem.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_stopwatch.c 0x00000000   Number         0  tos_stopwatch.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_sys.c 0x00000000   Number         0  tos_sys.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_task.c 0x00000000   Number         0  tos_task.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_tick.c 0x00000000   Number         0  tos_tick.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_time.c 0x00000000   Number         0  tos_time.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\kernel\\core\\tos_timer.c 0x00000000   Number         0  tos_timer.o ABSOLUTE
+    D:\\Keil_v5\\Packs\\Tencent\\TencentOS-tiny\\1.0.0\\osal\\cmsis_os\\cmsis_os.c 0x00000000   Number         0  cmsis_os.o ABSOLUTE
+    RTE\Device\ARMCM4\startup_ARMCM4.s       0x00000000   Number         0  startup_armcm4.o ABSOLUTE
+    RTE\Device\ARMCM4\system_ARMCM4.c        0x00000000   Number         0  system_armcm4.o ABSOLUTE
+    RTE\TencentOS_tiny\hello_world.c         0x00000000   Number         0  hello_world.o ABSOLUTE
+    RTE\TencentOS_tiny\main.c                0x00000000   Number         0  main.o ABSOLUTE
+    RTE\\Device\\ARMCM4\\system_ARMCM4.c     0x00000000   Number         0  system_armcm4.o ABSOLUTE
+    RTE\\TencentOS_tiny\\hello_world.c       0x00000000   Number         0  hello_world.o ABSOLUTE
+    RTE\\TencentOS_tiny\\main.c              0x00000000   Number         0  main.o ABSOLUTE
+    cdrcmple.s                               0x00000000   Number         0  cdrcmple.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    handlers.s                               0x00000000   Number         0  handlers.o ABSOLUTE
+    init.s                                   0x00000000   Number         0  init.o ABSOLUTE
+    .ARM.Collect$$$$00000000                 0x000003c0   Section        0  entry.o(.ARM.Collect$$$$00000000)
+    .ARM.Collect$$$$00000001                 0x000003c0   Section        4  entry2.o(.ARM.Collect$$$$00000001)
+    .ARM.Collect$$$$00000004                 0x000003c4   Section        4  entry5.o(.ARM.Collect$$$$00000004)
+    .ARM.Collect$$$$00000008                 0x000003c8   Section        0  entry7b.o(.ARM.Collect$$$$00000008)
+    .ARM.Collect$$$$0000000A                 0x000003c8   Section        0  entry8b.o(.ARM.Collect$$$$0000000A)
+    .ARM.Collect$$$$0000000B                 0x000003c8   Section        8  entry9a.o(.ARM.Collect$$$$0000000B)
+    .ARM.Collect$$$$0000000D                 0x000003d0   Section        0  entry10a.o(.ARM.Collect$$$$0000000D)
+    .ARM.Collect$$$$0000000F                 0x000003d0   Section        0  entry11a.o(.ARM.Collect$$$$0000000F)
+    .ARM.Collect$$$$00002712                 0x000003d0   Section        4  entry2.o(.ARM.Collect$$$$00002712)
+    __lit__00000000                          0x000003d0   Data           4  entry2.o(.ARM.Collect$$$$00002712)
+    .text                                    0x000003d4   Section       56  startup_armcm4.o(.text)
+    .text                                    0x0000040c   Section      192  port_s.o(.text)
+    .text                                    0x000004cc   Section        0  uldiv.o(.text)
+    .text                                    0x0000052e   Section        0  strncpy.o(.text)
+    .text                                    0x00000546   Section        0  llshl.o(.text)
+    .text                                    0x00000564   Section        0  llushr.o(.text)
+    .text                                    0x00000584   Section       36  init.o(.text)
+    .text                                    0x000005a8   Section        0  iusesemip.o(.text)
+    .text                                    0x000005a8   Section        0  semi.o(.text)
+    i.SystemInit                             0x000005a8   Section        0  system_armcm4.o(i.SystemInit)
+    i.__0printf$5                            0x000005c8   Section        0  printf5.o(i.__0printf$5)
+    i.__NVIC_SetPriority                     0x000005e8   Section        0  port_c.o(i.__NVIC_SetPriority)
+    __NVIC_SetPriority                       0x000005e9   Thumb Code    32  port_c.o(i.__NVIC_SetPriority)
+    i.__fls                                  0x00000610   Section        0  tos_mmheap.o(i.__fls)
+    __fls                                    0x00000611   Thumb Code    14  tos_mmheap.o(i.__fls)
+    i.__scatterload_copy                     0x0000061e   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0000062c   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x0000062e   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._list_add                              0x0000063c   Section        0  tos_sched.o(i._list_add)
+    _list_add                                0x0000063d   Thumb Code    10  tos_sched.o(i._list_add)
+    i._list_del                              0x00000646   Section        0  tos_sched.o(i._list_del)
+    _list_del                                0x00000647   Thumb Code     6  tos_sched.o(i._list_del)
+    i._printf_core                           0x0000064c   Section        0  printf5.o(i._printf_core)
+    _printf_core                             0x0000064d   Thumb Code   658  printf5.o(i._printf_core)
+    i.application_entry                      0x0000090c   Section        0  hello_world.o(i.application_entry)
+    i.blk_insert                             0x00000978   Section        0  tos_mmheap.o(i.blk_insert)
+    blk_insert                               0x00000979   Thumb Code    32  tos_mmheap.o(i.blk_insert)
+    i.blk_link_next                          0x00000998   Section        0  tos_mmheap.o(i.blk_link_next)
+    blk_link_next                            0x00000999   Thumb Code    18  tos_mmheap.o(i.blk_link_next)
+    i.blk_next                               0x000009aa   Section        0  tos_mmheap.o(i.blk_next)
+    blk_next                                 0x000009ab   Thumb Code    36  tos_mmheap.o(i.blk_next)
+    i.blk_set_free                           0x000009ce   Section        0  tos_mmheap.o(i.blk_set_free)
+    blk_set_free                             0x000009cf   Thumb Code    10  tos_mmheap.o(i.blk_set_free)
+    i.blk_set_prev_free                      0x000009d8   Section        0  tos_mmheap.o(i.blk_set_prev_free)
+    blk_set_prev_free                        0x000009d9   Thumb Code    10  tos_mmheap.o(i.blk_set_prev_free)
+    i.blk_set_prev_used                      0x000009e2   Section        0  tos_mmheap.o(i.blk_set_prev_used)
+    blk_set_prev_used                        0x000009e3   Thumb Code    10  tos_mmheap.o(i.blk_set_prev_used)
+    i.blk_set_size                           0x000009ec   Section        0  tos_mmheap.o(i.blk_set_size)
+    blk_set_size                             0x000009ed   Thumb Code    12  tos_mmheap.o(i.blk_set_size)
+    i.blk_set_used                           0x000009f8   Section        0  tos_mmheap.o(i.blk_set_used)
+    blk_set_used                             0x000009f9   Thumb Code    10  tos_mmheap.o(i.blk_set_used)
+    i.blk_size                               0x00000a02   Section        0  tos_mmheap.o(i.blk_size)
+    blk_size                                 0x00000a03   Thumb Code    10  tos_mmheap.o(i.blk_size)
+    i.blk_to_ptr                             0x00000a0c   Section        0  tos_mmheap.o(i.blk_to_ptr)
+    blk_to_ptr                               0x00000a0d   Thumb Code     8  tos_mmheap.o(i.blk_to_ptr)
+    i.cpu_context_switch                     0x00000a14   Section        0  tos_cpu.o(i.cpu_context_switch)
+    i.cpu_init                               0x00000a1c   Section        0  tos_cpu.o(i.cpu_init)
+    i.cpu_sched_start                        0x00000a44   Section        0  tos_cpu.o(i.cpu_sched_start)
+    i.cpu_systick_init                       0x00000a48   Section        0  tos_cpu.o(i.cpu_systick_init)
+    i.cpu_task_stk_init                      0x00000a5a   Section        0  tos_cpu.o(i.cpu_task_stk_init)
+    i.fputc                                  0x00000afa   Section        0  fputc.o(i.fputc)
+    i.generic_fls                            0x00000b0c   Section        0  tos_mmheap.o(i.generic_fls)
+    generic_fls                              0x00000b0d   Thumb Code    16  tos_mmheap.o(i.generic_fls)
+    i.insert_free_block                      0x00000b1c   Section        0  tos_mmheap.o(i.insert_free_block)
+    insert_free_block                        0x00000b1d   Thumb Code    74  tos_mmheap.o(i.insert_free_block)
+    i.knl_idle_entry                         0x00000b6c   Section        0  tos_sys.o(i.knl_idle_entry)
+    knl_idle_entry                           0x00000b6d   Thumb Code     6  tos_sys.o(i.knl_idle_entry)
+    i.knl_idle_init                          0x00000b74   Section        0  tos_sys.o(i.knl_idle_init)
+    i.knl_is_idle                            0x00000bb4   Section        0  tos_sys.o(i.knl_is_idle)
+    i.knl_is_inirq                           0x00000bc8   Section        0  tos_sys.o(i.knl_is_inirq)
+    i.knl_is_sched_locked                    0x00000bdc   Section        0  tos_sys.o(i.knl_is_sched_locked)
+    i.knl_is_self                            0x00000bf0   Section        0  tos_sys.o(i.knl_is_self)
+    i.knl_object_verify                      0x00000c08   Section        0  tos_task.o(i.knl_object_verify)
+    knl_object_verify                        0x00000c09   Thumb Code    16  tos_task.o(i.knl_object_verify)
+    i.knl_sched                              0x00000c18   Section        0  tos_sys.o(i.knl_sched)
+    i.main                                   0x00000c7c   Section        0  main.o(i.main)
+    i.mapping_insert                         0x00000cec   Section        0  tos_mmheap.o(i.mapping_insert)
+    mapping_insert                           0x00000ced   Thumb Code    58  tos_mmheap.o(i.mapping_insert)
+    i.mmheap_ctl_init                        0x00000d28   Section        0  tos_mmheap.o(i.mmheap_ctl_init)
+    mmheap_ctl_init                          0x00000d29   Thumb Code    88  tos_mmheap.o(i.mmheap_ctl_init)
+    i.mmheap_init_with_pool                  0x00000d84   Section        0  tos_mmheap.o(i.mmheap_init_with_pool)
+    i.mmheap_pool_is_exist                   0x00000d98   Section        0  tos_mmheap.o(i.mmheap_pool_is_exist)
+    mmheap_pool_is_exist                     0x00000d99   Thumb Code    38  tos_mmheap.o(i.mmheap_pool_is_exist)
+    i.mutex_old_owner_release                0x00000dc4   Section        0  tos_mutex.o(i.mutex_old_owner_release)
+    mutex_old_owner_release                  0x00000dc5   Thumb Code    76  tos_mutex.o(i.mutex_old_owner_release)
+    i.mutex_release                          0x00000e10   Section        0  tos_mutex.o(i.mutex_release)
+    i.offset_to_blk                          0x00000e24   Section        0  tos_mmheap.o(i.offset_to_blk)
+    offset_to_blk                            0x00000e25   Thumb Code     6  tos_mmheap.o(i.offset_to_blk)
+    i.pend_highest_pending_prio_get          0x00000e2a   Section        0  tos_pend.o(i.pend_highest_pending_prio_get)
+    i.pend_list_add                          0x00000e4c   Section        0  tos_pend.o(i.pend_list_add)
+    pend_list_add                            0x00000e4d   Thumb Code    84  tos_pend.o(i.pend_list_add)
+    i.pend_list_adjust                       0x00000ea0   Section        0  tos_pend.o(i.pend_list_adjust)
+    i.pend_list_remove                       0x00000eb6   Section        0  tos_pend.o(i.pend_list_remove)
+    i.pend_task_wakeup                       0x00000ed8   Section        0  tos_pend.o(i.pend_task_wakeup)
+    i.pend_wakeup_all                        0x00000f1e   Section        0  tos_pend.o(i.pend_wakeup_all)
+    i.port_systick_config                    0x00000f50   Section        0  port_c.o(i.port_systick_config)
+    i.port_systick_priority_set              0x00000f82   Section        0  port_c.o(i.port_systick_priority_set)
+    i.readyqueue_add                         0x00000f94   Section        0  tos_sched.o(i.readyqueue_add)
+    i.readyqueue_add_head                    0x00000fbc   Section        0  tos_sched.o(i.readyqueue_add_head)
+    i.readyqueue_add_tail                    0x00000ff4   Section        0  tos_sched.o(i.readyqueue_add_tail)
+    i.readyqueue_highest_ready_task_get      0x00001020   Section        0  tos_sched.o(i.readyqueue_highest_ready_task_get)
+    i.readyqueue_init                        0x00001038   Section        0  tos_sched.o(i.readyqueue_init)
+    i.readyqueue_prio_highest_get            0x00001078   Section        0  tos_sched.o(i.readyqueue_prio_highest_get)
+    readyqueue_prio_highest_get              0x00001079   Thumb Code    36  tos_sched.o(i.readyqueue_prio_highest_get)
+    i.readyqueue_prio_mark                   0x000010a0   Section        0  tos_sched.o(i.readyqueue_prio_mark)
+    readyqueue_prio_mark                     0x000010a1   Thumb Code    56  tos_sched.o(i.readyqueue_prio_mark)
+    i.readyqueue_remove                      0x000010dc   Section        0  tos_sched.o(i.readyqueue_remove)
+    i.task1_entry                            0x00001140   Section        0  hello_world.o(i.task1_entry)
+    i.task2_entry                            0x00001164   Section        0  hello_world.o(i.task2_entry)
+    i.task_destroy_static                    0x00001188   Section        0  tos_task.o(i.task_destroy_static)
+    task_destroy_static                      0x00001189   Thumb Code    12  tos_task.o(i.task_destroy_static)
+    i.task_do_destroy                        0x00001194   Section        0  tos_task.o(i.task_do_destroy)
+    task_do_destroy                          0x00001195   Thumb Code   144  tos_task.o(i.task_do_destroy)
+    i.task_exit                              0x00001224   Section        0  tos_task.o(i.task_exit)
+    task_exit                                0x00001225   Thumb Code    10  tos_task.o(i.task_exit)
+    i.task_highest_pending_prio_get          0x0000122e   Section        0  tos_task.o(i.task_highest_pending_prio_get)
+    task_highest_pending_prio_get            0x0000122f   Thumb Code    54  tos_task.o(i.task_highest_pending_prio_get)
+    i.task_mutex_release                     0x00001264   Section        0  tos_task.o(i.task_mutex_release)
+    task_mutex_release                       0x00001265   Thumb Code    46  tos_task.o(i.task_mutex_release)
+    i.task_reset                             0x00001292   Section        0  tos_task.o(i.task_reset)
+    task_reset                               0x00001293   Thumb Code    58  tos_task.o(i.task_reset)
+    i.task_state_is_ready                    0x000012cc   Section        0  tos_task.o(i.task_state_is_ready)
+    task_state_is_ready                      0x000012cd   Thumb Code    16  tos_task.o(i.task_state_is_ready)
+    i.tick_list_add                          0x000012dc   Section        0  tos_tick.o(i.tick_list_add)
+    i.tick_list_remove                       0x00001300   Section        0  tos_tick.o(i.tick_list_remove)
+    i.tick_task_place                        0x0000131c   Section        0  tos_tick.o(i.tick_task_place)
+    tick_task_place                          0x0000131d   Thumb Code   196  tos_tick.o(i.tick_task_place)
+    i.tick_task_takeoff                      0x000013e4   Section        0  tos_tick.o(i.tick_task_takeoff)
+    tick_task_takeoff                        0x000013e5   Thumb Code   126  tos_tick.o(i.tick_task_takeoff)
+    i.timer_init                             0x00001468   Section        0  tos_timer.o(i.timer_init)
+    i.tos_cpu_clz                            0x0000146c   Section        0  tos_cpu.o(i.tos_cpu_clz)
+    i.tos_cpu_cpsr_restore                   0x00001478   Section        0  tos_cpu.o(i.tos_cpu_cpsr_restore)
+    i.tos_cpu_cpsr_save                      0x00001484   Section        0  tos_cpu.o(i.tos_cpu_cpsr_save)
+    i.tos_knl_init                           0x0000148c   Section        0  tos_sys.o(i.tos_knl_init)
+    i.tos_knl_is_running                     0x000014c8   Section        0  tos_sys.o(i.tos_knl_is_running)
+    i.tos_knl_start                          0x000014dc   Section        0  tos_sys.o(i.tos_knl_start)
+    i.tos_list_add_tail                      0x0000151c   Section        0  tos_sched.o(i.tos_list_add_tail)
+    tos_list_add_tail                        0x0000151d   Thumb Code    18  tos_sched.o(i.tos_list_add_tail)
+    i.tos_list_del                           0x0000152e   Section        0  tos_pend.o(i.tos_list_del)
+    tos_list_del                             0x0000152f   Thumb Code    12  tos_pend.o(i.tos_list_del)
+    i.tos_list_empty                         0x0000153a   Section        0  tos_pend.o(i.tos_list_empty)
+    tos_list_empty                           0x0000153b   Thumb Code    16  tos_pend.o(i.tos_list_empty)
+    i.tos_list_empty                         0x0000154a   Section        0  tos_sched.o(i.tos_list_empty)
+    tos_list_empty                           0x0000154b   Thumb Code    16  tos_sched.o(i.tos_list_empty)
+    i.tos_list_empty                         0x0000155a   Section        0  tos_task.o(i.tos_list_empty)
+    tos_list_empty                           0x0000155b   Thumb Code    16  tos_task.o(i.tos_list_empty)
+    i.tos_list_empty                         0x0000156a   Section        0  tos_tick.o(i.tos_list_empty)
+    tos_list_empty                           0x0000156b   Thumb Code    16  tos_tick.o(i.tos_list_empty)
+    i.tos_list_init                          0x0000157a   Section        0  tos_task.o(i.tos_list_init)
+    tos_list_init                            0x0000157b   Thumb Code     6  tos_task.o(i.tos_list_init)
+    i.tos_mmheap_pool_add                    0x00001580   Section        0  tos_mmheap.o(i.tos_mmheap_pool_add)
+    i.tos_task_create                        0x0000163c   Section        0  tos_task.o(i.tos_task_create)
+    i.tos_task_delay                         0x000017a8   Section        0  tos_task.o(i.tos_task_delay)
+    i.tos_task_destroy                       0x00001840   Section        0  tos_task.o(i.tos_task_destroy)
+    i.tos_task_prio_change                   0x000018a0   Section        0  tos_task.o(i.tos_task_prio_change)
+    i.tos_task_yield                         0x000019a4   Section        0  tos_task.o(i.tos_task_yield)
+    .constdata                               0x000019e0   Section        8  tos_global.o(.constdata)
+    .data                                    0x20000000   Section        4  system_armcm4.o(.data)
+    .data                                    0x20000008   Section       72  tos_global.o(.data)
+    .data                                    0x20000050   Section        4  stdout.o(.data)
+    .bss                                     0x20000058   Section     4564  tos_global.o(.bss)
+    .bss                                     0x20001230   Section     2288  hello_world.o(.bss)
+    .bss                                     0x20001b20   Section     4216  main.o(.bss)
+    STACK                                    0x20002b98   Section     1024  startup_armcm4.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$E$P$D$K$B$S$7EM$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$ROPI$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __ARM_use_no_argv                        0x00000000   Number         0  main.o ABSOLUTE
+    __Vectors                                0x00000000   Data           4  startup_armcm4.o(RESET)
+    _printf_a                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_c                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_charcount                        0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_d                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_e                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_f                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_flags                            0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_fp_dec                           0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_fp_hex                           0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_g                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_i                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_int_dec                          0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_l                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_lc                               0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_ll                               0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_lld                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_lli                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_llo                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_llu                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_llx                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_longlong_dec                     0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_longlong_hex                     0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_longlong_oct                     0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_ls                               0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_mbtowc                           0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_n                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_o                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_p                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_percent                          0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_pre_padding                      0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_return_value                     0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_s                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_sizespec                         0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_str                              0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_truncate_signed                  0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_truncate_unsigned                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_u                                0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_wc                               0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_wctomb                           0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_widthprec                        0x00000000   Number         0  stubs.o ABSOLUTE
+    _printf_x                                0x00000000   Number         0  stubs.o ABSOLUTE
+    __cpp_initialize__aeabi_                  - Undefined Weak Reference
+    __cxa_finalize                            - Undefined Weak Reference
+    __decompress                              - Undefined Weak Reference
+    _clock_init                               - Undefined Weak Reference
+    _microlib_exit                            - Undefined Weak Reference
+    __Vectors_End                            0x000003c0   Data           0  startup_armcm4.o(RESET)
+    __Vectors_Size                           0x000003c0   Number         0  startup_armcm4.o ABSOLUTE
+    __main                                   0x000003c1   Thumb Code     0  entry.o(.ARM.Collect$$$$00000000)
+    _main_stk                                0x000003c1   Thumb Code     0  entry2.o(.ARM.Collect$$$$00000001)
+    _main_scatterload                        0x000003c5   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    __main_after_scatterload                 0x000003c9   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    _main_clock                              0x000003c9   Thumb Code     0  entry7b.o(.ARM.Collect$$$$00000008)
+    _main_cpp_init                           0x000003c9   Thumb Code     0  entry8b.o(.ARM.Collect$$$$0000000A)
+    _main_init                               0x000003c9   Thumb Code     0  entry9a.o(.ARM.Collect$$$$0000000B)
+    __rt_final_cpp                           0x000003d1   Thumb Code     0  entry10a.o(.ARM.Collect$$$$0000000D)
+    __rt_final_exit                          0x000003d1   Thumb Code     0  entry11a.o(.ARM.Collect$$$$0000000F)
+    Reset_Handler                            0x000003d5   Thumb Code     8  startup_armcm4.o(.text)
+    HardFault_Handler                        0x000003dd   Thumb Code     2  startup_armcm4.o(.text)
+    NMI_Handler                              0x000003df   Thumb Code     2  startup_armcm4.o(.text)
+    MemManage_Handler                        0x000003e1   Thumb Code     2  startup_armcm4.o(.text)
+    BusFault_Handler                         0x000003e3   Thumb Code     2  startup_armcm4.o(.text)
+    UsageFault_Handler                       0x000003e5   Thumb Code     2  startup_armcm4.o(.text)
+    SVC_Handler                              0x000003e7   Thumb Code     2  startup_armcm4.o(.text)
+    DebugMon_Handler                         0x000003e9   Thumb Code     2  startup_armcm4.o(.text)
+    SysTick_Handler                          0x000003ed   Thumb Code     2  startup_armcm4.o(.text)
+    Interrupt0_Handler                       0x000003ef   Thumb Code     2  startup_armcm4.o(.text)
+    Interrupt1_Handler                       0x000003f1   Thumb Code     2  startup_armcm4.o(.text)
+    Interrupt2_Handler                       0x000003f3   Thumb Code     2  startup_armcm4.o(.text)
+    Interrupt3_Handler                       0x000003f5   Thumb Code     2  startup_armcm4.o(.text)
+    Interrupt4_Handler                       0x000003f7   Thumb Code     2  startup_armcm4.o(.text)
+    Interrupt5_Handler                       0x000003f9   Thumb Code     2  startup_armcm4.o(.text)
+    Interrupt6_Handler                       0x000003fb   Thumb Code     2  startup_armcm4.o(.text)
+    Interrupt7_Handler                       0x000003fd   Thumb Code     2  startup_armcm4.o(.text)
+    Interrupt8_Handler                       0x000003ff   Thumb Code     2  startup_armcm4.o(.text)
+    Interrupt9_Handler                       0x00000401   Thumb Code     2  startup_armcm4.o(.text)
+    port_int_disable                         0x0000040d   Thumb Code     0  port_s.o(.text)
+    port_int_enable                          0x00000411   Thumb Code     0  port_s.o(.text)
+    port_cpsr_save                           0x00000415   Thumb Code     0  port_s.o(.text)
+    port_cpsr_restore                        0x0000041d   Thumb Code     0  port_s.o(.text)
+    port_clz                                 0x00000423   Thumb Code     0  port_s.o(.text)
+    port_sched_start                         0x00000429   Thumb Code     0  port_s.o(.text)
+    port_context_switch                      0x00000481   Thumb Code     0  port_s.o(.text)
+    port_irq_context_switch                  0x0000048b   Thumb Code     0  port_s.o(.text)
+    PendSV_Handler                           0x00000495   Thumb Code     0  port_s.o(.text)
+    __aeabi_uldivmod                         0x000004cd   Thumb Code    98  uldiv.o(.text)
+    strncpy                                  0x0000052f   Thumb Code    24  strncpy.o(.text)
+    __aeabi_llsl                             0x00000547   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x00000547   Thumb Code     0  llshl.o(.text)
+    __aeabi_llsr                             0x00000565   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x00000565   Thumb Code     0  llushr.o(.text)
+    __scatterload                            0x00000585   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x00000585   Thumb Code     0  init.o(.text)
+    SystemInit                               0x000005a9   Thumb Code    14  system_armcm4.o(i.SystemInit)
+    __I$use$semihosting$fputc                0x000005a9   Thumb Code     0  iusesemip.o(.text)
+    __semihosting_library_function           0x000005a9   Thumb Code     0  semi.o(.text)
+    __0printf$5                              0x000005c9   Thumb Code    22  printf5.o(i.__0printf$5)
+    __1printf$5                              0x000005c9   Thumb Code     0  printf5.o(i.__0printf$5)
+    __2printf                                0x000005c9   Thumb Code     0  printf5.o(i.__0printf$5)
+    __scatterload_copy                       0x0000061f   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0000062d   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x0000062f   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    application_entry                        0x0000090d   Thumb Code    66  hello_world.o(i.application_entry)
+    cpu_context_switch                       0x00000a15   Thumb Code     8  tos_cpu.o(i.cpu_context_switch)
+    cpu_init                                 0x00000a1d   Thumb Code    28  tos_cpu.o(i.cpu_init)
+    cpu_sched_start                          0x00000a45   Thumb Code     4  tos_cpu.o(i.cpu_sched_start)
+    cpu_systick_init                         0x00000a49   Thumb Code    18  tos_cpu.o(i.cpu_systick_init)
+    cpu_task_stk_init                        0x00000a5b   Thumb Code   160  tos_cpu.o(i.cpu_task_stk_init)
+    fputc                                    0x00000afb   Thumb Code    18  fputc.o(i.fputc)
+    knl_idle_init                            0x00000b75   Thumb Code    38  tos_sys.o(i.knl_idle_init)
+    knl_is_idle                              0x00000bb5   Thumb Code    16  tos_sys.o(i.knl_is_idle)
+    knl_is_inirq                             0x00000bc9   Thumb Code    14  tos_sys.o(i.knl_is_inirq)
+    knl_is_sched_locked                      0x00000bdd   Thumb Code    14  tos_sys.o(i.knl_is_sched_locked)
+    knl_is_self                              0x00000bf1   Thumb Code    18  tos_sys.o(i.knl_is_self)
+    knl_sched                                0x00000c19   Thumb Code    94  tos_sys.o(i.knl_sched)
+    main                                     0x00000c7d   Thumb Code    52  main.o(i.main)
+    mmheap_init_with_pool                    0x00000d85   Thumb Code    20  tos_mmheap.o(i.mmheap_init_with_pool)
+    mutex_release                            0x00000e11   Thumb Code    20  tos_mutex.o(i.mutex_release)
+    pend_highest_pending_prio_get            0x00000e2b   Thumb Code    34  tos_pend.o(i.pend_highest_pending_prio_get)
+    pend_list_adjust                         0x00000ea1   Thumb Code    22  tos_pend.o(i.pend_list_adjust)
+    pend_list_remove                         0x00000eb7   Thumb Code    34  tos_pend.o(i.pend_list_remove)
+    pend_task_wakeup                         0x00000ed9   Thumb Code    70  tos_pend.o(i.pend_task_wakeup)
+    pend_wakeup_all                          0x00000f1f   Thumb Code    50  tos_pend.o(i.pend_wakeup_all)
+    port_systick_config                      0x00000f51   Thumb Code    50  port_c.o(i.port_systick_config)
+    port_systick_priority_set                0x00000f83   Thumb Code    16  port_c.o(i.port_systick_priority_set)
+    readyqueue_add                           0x00000f95   Thumb Code    36  tos_sched.o(i.readyqueue_add)
+    readyqueue_add_head                      0x00000fbd   Thumb Code    50  tos_sched.o(i.readyqueue_add_head)
+    readyqueue_add_tail                      0x00000ff5   Thumb Code    40  tos_sched.o(i.readyqueue_add_tail)
+    readyqueue_highest_ready_task_get        0x00001021   Thumb Code    18  tos_sched.o(i.readyqueue_highest_ready_task_get)
+    readyqueue_init                          0x00001039   Thumb Code    60  tos_sched.o(i.readyqueue_init)
+    readyqueue_remove                        0x000010dd   Thumb Code    96  tos_sched.o(i.readyqueue_remove)
+    task1_entry                              0x00001141   Thumb Code    20  hello_world.o(i.task1_entry)
+    task2_entry                              0x00001165   Thumb Code    20  hello_world.o(i.task2_entry)
+    tick_list_add                            0x000012dd   Thumb Code    36  tos_tick.o(i.tick_list_add)
+    tick_list_remove                         0x00001301   Thumb Code    28  tos_tick.o(i.tick_list_remove)
+    timer_init                               0x00001469   Thumb Code     4  tos_timer.o(i.timer_init)
+    tos_cpu_clz                              0x0000146d   Thumb Code    12  tos_cpu.o(i.tos_cpu_clz)
+    tos_cpu_cpsr_restore                     0x00001479   Thumb Code    12  tos_cpu.o(i.tos_cpu_cpsr_restore)
+    tos_cpu_cpsr_save                        0x00001485   Thumb Code     8  tos_cpu.o(i.tos_cpu_cpsr_save)
+    tos_knl_init                             0x0000148d   Thumb Code    56  tos_sys.o(i.tos_knl_init)
+    tos_knl_is_running                       0x000014c9   Thumb Code    14  tos_sys.o(i.tos_knl_is_running)
+    tos_knl_start                            0x000014dd   Thumb Code    52  tos_sys.o(i.tos_knl_start)
+    tos_mmheap_pool_add                      0x00001581   Thumb Code   182  tos_mmheap.o(i.tos_mmheap_pool_add)
+    tos_task_create                          0x0000163d   Thumb Code   352  tos_task.o(i.tos_task_create)
+    tos_task_delay                           0x000017a9   Thumb Code   146  tos_task.o(i.tos_task_delay)
+    tos_task_destroy                         0x00001841   Thumb Code    92  tos_task.o(i.tos_task_destroy)
+    tos_task_prio_change                     0x000018a1   Thumb Code   260  tos_task.o(i.tos_task_prio_change)
+    tos_task_yield                           0x000019a5   Thumb Code    56  tos_task.o(i.tos_task_yield)
+    k_idle_task_stk_addr                     0x000019e0   Data           4  tos_global.o(.constdata)
+    k_idle_task_stk_size                     0x000019e4   Data           4  tos_global.o(.constdata)
+    Region$$Table$$Base                      0x000019e8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00001a08   Number         0  anon$$obj.o(Region$$Table)
+    SystemCoreClock                          0x20000000   Data           4  system_armcm4.o(.data)
+    k_irq_nest_cnt                           0x20000008   Data           1  tos_global.o(.data)
+    k_sched_lock_nest_cnt                    0x20000009   Data           1  tos_global.o(.data)
+    k_knl_state                              0x2000000a   Data           1  tos_global.o(.data)
+    k_tick_count                             0x20000010   Data           8  tos_global.o(.data)
+    k_curr_task                              0x20000018   Data           4  tos_global.o(.data)
+    k_next_task                              0x2000001c   Data           4  tos_global.o(.data)
+    k_cpu_tick_per_second                    0x20000020   Data           8  tos_global.o(.data)
+    k_cpu_cycle_per_tick                     0x20000028   Data           4  tos_global.o(.data)
+    k_stat_list                              0x2000002c   Data           8  tos_global.o(.data)
+    k_tick_list                              0x20000034   Data           8  tos_global.o(.data)
+    k_robin_default_timeslice                0x2000003c   Data           4  tos_global.o(.data)
+    k_timer_ctl                              0x20000040   Data          16  tos_global.o(.data)
+    __stdout                                 0x20000050   Data           4  stdout.o(.data)
+    k_rdyq                                   0x20000058   Data          88  tos_global.o(.bss)
+    k_idle_task                              0x200000b0   Data         120  tos_global.o(.bss)
+    k_idle_task_stk                          0x20000128   Data         128  tos_global.o(.bss)
+    k_mmheap_default_pool                    0x200001a8   Data        1024  tos_global.o(.bss)
+    k_mmheap_ctl                             0x200005a8   Data        3204  tos_global.o(.bss)
+    task1                                    0x20001230   Data         120  hello_world.o(.bss)
+    task1_stk                                0x200012a8   Data        1024  hello_world.o(.bss)
+    task2                                    0x200016a8   Data         120  hello_world.o(.bss)
+    task2_stk                                0x20001720   Data        1024  hello_world.o(.bss)
+    application_task                         0x20001b20   Data         120  main.o(.bss)
+    application_task_stk                     0x20001b98   Data        4096  main.o(.bss)
+    __stack_limit                            0x20002b98   Data           0  startup_armcm4.o(STACK)
+    __initial_sp                             0x20002f98   Data           0  startup_armcm4.o(STACK)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x000003c1
+
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00001a5c, Max: 0x00040000, ABSOLUTE)
+
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001a08, Max: 0x00040000, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x00000000   0x000003c0   Data   RO            3    RESET               startup_armcm4.o
+    0x000003c0   0x000003c0   0x00000000   Code   RO         3161  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x000003c0   0x000003c0   0x00000004   Code   RO         3435    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x000003c4   0x000003c4   0x00000004   Code   RO         3438    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x000003c8   0x000003c8   0x00000000   Code   RO         3440    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x000003c8   0x000003c8   0x00000000   Code   RO         3442    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x000003c8   0x000003c8   0x00000008   Code   RO         3443    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x000003d0   0x000003d0   0x00000000   Code   RO         3445    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x000003d0   0x000003d0   0x00000000   Code   RO         3447    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x000003d0   0x000003d0   0x00000004   Code   RO         3436    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x000003d4   0x000003d4   0x00000038   Code   RO            4    .text               startup_armcm4.o
+    0x0000040c   0x0000040c   0x000000c0   Code   RO          379    .text               port_s.o
+    0x000004cc   0x000004cc   0x00000062   Code   RO         3164    .text               mc_w.l(uldiv.o)
+    0x0000052e   0x0000052e   0x00000018   Code   RO         3170    .text               mc_w.l(strncpy.o)
+    0x00000546   0x00000546   0x0000001e   Code   RO         3454    .text               mc_w.l(llshl.o)
+    0x00000564   0x00000564   0x00000020   Code   RO         3456    .text               mc_w.l(llushr.o)
+    0x00000584   0x00000584   0x00000024   Code   RO         3469    .text               mc_w.l(init.o)
+    0x000005a8   0x000005a8   0x00000000   Code   RO         3471    .text               mc_w.l(semi.o)
+    0x000005a8   0x000005a8   0x00000000   Code   RO         3474    .text               mc_w.l(iusesemip.o)
+    0x000005a8   0x000005a8   0x00000020   Code   RO           14    i.SystemInit        system_armcm4.o
+    0x000005c8   0x000005c8   0x00000020   Code   RO         3307    i.__0printf$5       mc_w.l(printf5.o)
+    0x000005e8   0x000005e8   0x00000028   Code   RO          337    i.__NVIC_SetPriority  port_c.o
+    0x00000610   0x00000610   0x0000000e   Code   RO          983    i.__fls             tos_mmheap.o
+    0x0000061e   0x0000061e   0x0000000e   Code   RO         3479    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0000062c   0x0000062c   0x00000002   Code   RO         3480    i.__scatterload_null  mc_w.l(handlers.o)
+    0x0000062e   0x0000062e   0x0000000e   Code   RO         3481    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0000063c   0x0000063c   0x0000000a   Code   RO         1936    i._list_add         tos_sched.o
+    0x00000646   0x00000646   0x00000006   Code   RO         1937    i._list_del         tos_sched.o
+    0x0000064c   0x0000064c   0x000002c0   Code   RO         3314    i._printf_core      mc_w.l(printf5.o)
+    0x0000090c   0x0000090c   0x0000006c   Code   RO         3098    i.application_entry  hello_world.o
+    0x00000978   0x00000978   0x00000020   Code   RO          988    i.blk_insert        tos_mmheap.o
+    0x00000998   0x00000998   0x00000012   Code   RO          989    i.blk_link_next     tos_mmheap.o
+    0x000009aa   0x000009aa   0x00000024   Code   RO          995    i.blk_next          tos_mmheap.o
+    0x000009ce   0x000009ce   0x0000000a   Code   RO          999    i.blk_set_free      tos_mmheap.o
+    0x000009d8   0x000009d8   0x0000000a   Code   RO         1000    i.blk_set_prev_free  tos_mmheap.o
+    0x000009e2   0x000009e2   0x0000000a   Code   RO         1001    i.blk_set_prev_used  tos_mmheap.o
+    0x000009ec   0x000009ec   0x0000000c   Code   RO         1002    i.blk_set_size      tos_mmheap.o
+    0x000009f8   0x000009f8   0x0000000a   Code   RO         1003    i.blk_set_used      tos_mmheap.o
+    0x00000a02   0x00000a02   0x0000000a   Code   RO         1004    i.blk_size          tos_mmheap.o
+    0x00000a0c   0x00000a0c   0x00000008   Code   RO         1006    i.blk_to_ptr        tos_mmheap.o
+    0x00000a14   0x00000a14   0x00000008   Code   RO           73    i.cpu_context_switch  tos_cpu.o
+    0x00000a1c   0x00000a1c   0x00000028   Code   RO           74    i.cpu_init          tos_cpu.o
+    0x00000a44   0x00000a44   0x00000004   Code   RO           77    i.cpu_sched_start   tos_cpu.o
+    0x00000a48   0x00000a48   0x00000012   Code   RO           78    i.cpu_systick_init  tos_cpu.o
+    0x00000a5a   0x00000a5a   0x000000a0   Code   RO           79    i.cpu_task_stk_init  tos_cpu.o
+    0x00000afa   0x00000afa   0x00000012   Code   RO         3449    i.fputc             mc_w.l(fputc.o)
+    0x00000b0c   0x00000b0c   0x00000010   Code   RO         1010    i.generic_fls       tos_mmheap.o
+    0x00000b1c   0x00000b1c   0x00000050   Code   RO         1011    i.insert_free_block  tos_mmheap.o
+    0x00000b6c   0x00000b6c   0x00000006   Code   RO         2270    i.knl_idle_entry    tos_sys.o
+    0x00000b72   0x00000b72   0x00000002   PAD
+    0x00000b74   0x00000b74   0x00000040   Code   RO         2271    i.knl_idle_init     tos_sys.o
+    0x00000bb4   0x00000bb4   0x00000014   Code   RO         2272    i.knl_is_idle       tos_sys.o
+    0x00000bc8   0x00000bc8   0x00000014   Code   RO         2273    i.knl_is_inirq      tos_sys.o
+    0x00000bdc   0x00000bdc   0x00000014   Code   RO         2274    i.knl_is_sched_locked  tos_sys.o
+    0x00000bf0   0x00000bf0   0x00000018   Code   RO         2275    i.knl_is_self       tos_sys.o
+    0x00000c08   0x00000c08   0x00000010   Code   RO         2371    i.knl_object_verify  tos_task.o
+    0x00000c18   0x00000c18   0x00000064   Code   RO         2276    i.knl_sched         tos_sys.o
+    0x00000c7c   0x00000c7c   0x00000070   Code   RO         3137    i.main              main.o
+    0x00000cec   0x00000cec   0x0000003a   Code   RO         1012    i.mapping_insert    tos_mmheap.o
+    0x00000d26   0x00000d26   0x00000002   PAD
+    0x00000d28   0x00000d28   0x0000005c   Code   RO         1014    i.mmheap_ctl_init   tos_mmheap.o
+    0x00000d84   0x00000d84   0x00000014   Code   RO         1016    i.mmheap_init_with_pool  tos_mmheap.o
+    0x00000d98   0x00000d98   0x0000002c   Code   RO         1017    i.mmheap_pool_is_exist  tos_mmheap.o
+    0x00000dc4   0x00000dc4   0x0000004c   Code   RO         1254    i.mutex_old_owner_release  tos_mutex.o
+    0x00000e10   0x00000e10   0x00000014   Code   RO         1255    i.mutex_release     tos_mutex.o
+    0x00000e24   0x00000e24   0x00000006   Code   RO         1019    i.offset_to_blk     tos_mmheap.o
+    0x00000e2a   0x00000e2a   0x00000022   Code   RO         1394    i.pend_highest_pending_prio_get  tos_pend.o
+    0x00000e4c   0x00000e4c   0x00000054   Code   RO         1397    i.pend_list_add     tos_pend.o
+    0x00000ea0   0x00000ea0   0x00000016   Code   RO         1398    i.pend_list_adjust  tos_pend.o
+    0x00000eb6   0x00000eb6   0x00000022   Code   RO         1399    i.pend_list_remove  tos_pend.o
+    0x00000ed8   0x00000ed8   0x00000046   Code   RO         1404    i.pend_task_wakeup  tos_pend.o
+    0x00000f1e   0x00000f1e   0x00000032   Code   RO         1406    i.pend_wakeup_all   tos_pend.o
+    0x00000f50   0x00000f50   0x00000032   Code   RO          339    i.port_systick_config  port_c.o
+    0x00000f82   0x00000f82   0x00000010   Code   RO          340    i.port_systick_priority_set  port_c.o
+    0x00000f92   0x00000f92   0x00000002   PAD
+    0x00000f94   0x00000f94   0x00000028   Code   RO         1938    i.readyqueue_add    tos_sched.o
+    0x00000fbc   0x00000fbc   0x00000038   Code   RO         1939    i.readyqueue_add_head  tos_sched.o
+    0x00000ff4   0x00000ff4   0x0000002c   Code   RO         1940    i.readyqueue_add_tail  tos_sched.o
+    0x00001020   0x00001020   0x00000018   Code   RO         1942    i.readyqueue_highest_ready_task_get  tos_sched.o
+    0x00001038   0x00001038   0x00000040   Code   RO         1943    i.readyqueue_init   tos_sched.o
+    0x00001078   0x00001078   0x00000028   Code   RO         1946    i.readyqueue_prio_highest_get  tos_sched.o
+    0x000010a0   0x000010a0   0x0000003c   Code   RO         1947    i.readyqueue_prio_mark  tos_sched.o
+    0x000010dc   0x000010dc   0x00000064   Code   RO         1948    i.readyqueue_remove  tos_sched.o
+    0x00001140   0x00001140   0x00000024   Code   RO         3099    i.task1_entry       hello_world.o
+    0x00001164   0x00001164   0x00000024   Code   RO         3100    i.task2_entry       hello_world.o
+    0x00001188   0x00001188   0x0000000c   Code   RO         2373    i.task_destroy_static  tos_task.o
+    0x00001194   0x00001194   0x00000090   Code   RO         2374    i.task_do_destroy   tos_task.o
+    0x00001224   0x00001224   0x0000000a   Code   RO         2375    i.task_exit         tos_task.o
+    0x0000122e   0x0000122e   0x00000036   Code   RO         2376    i.task_highest_pending_prio_get  tos_task.o
+    0x00001264   0x00001264   0x0000002e   Code   RO         2377    i.task_mutex_release  tos_task.o
+    0x00001292   0x00001292   0x0000003a   Code   RO         2378    i.task_reset        tos_task.o
+    0x000012cc   0x000012cc   0x00000010   Code   RO         2379    i.task_state_is_ready  tos_task.o
+    0x000012dc   0x000012dc   0x00000024   Code   RO         2550    i.tick_list_add     tos_tick.o
+    0x00001300   0x00001300   0x0000001c   Code   RO         2551    i.tick_list_remove  tos_tick.o
+    0x0000131c   0x0000131c   0x000000c8   Code   RO         2553    i.tick_task_place   tos_tick.o
+    0x000013e4   0x000013e4   0x00000084   Code   RO         2554    i.tick_task_takeoff  tos_tick.o
+    0x00001468   0x00001468   0x00000004   Code   RO         2709    i.timer_init        tos_timer.o
+    0x0000146c   0x0000146c   0x0000000c   Code   RO           80    i.tos_cpu_clz       tos_cpu.o
+    0x00001478   0x00001478   0x0000000c   Code   RO           81    i.tos_cpu_cpsr_restore  tos_cpu.o
+    0x00001484   0x00001484   0x00000008   Code   RO           82    i.tos_cpu_cpsr_save  tos_cpu.o
+    0x0000148c   0x0000148c   0x0000003c   Code   RO         2277    i.tos_knl_init      tos_sys.o
+    0x000014c8   0x000014c8   0x00000014   Code   RO         2280    i.tos_knl_is_running  tos_sys.o
+    0x000014dc   0x000014dc   0x00000040   Code   RO         2283    i.tos_knl_start     tos_sys.o
+    0x0000151c   0x0000151c   0x00000012   Code   RO         1949    i.tos_list_add_tail  tos_sched.o
+    0x0000152e   0x0000152e   0x0000000c   Code   RO         1408    i.tos_list_del      tos_pend.o
+    0x0000153a   0x0000153a   0x00000010   Code   RO         1409    i.tos_list_empty    tos_pend.o
+    0x0000154a   0x0000154a   0x00000010   Code   RO         1950    i.tos_list_empty    tos_sched.o
+    0x0000155a   0x0000155a   0x00000010   Code   RO         2380    i.tos_list_empty    tos_task.o
+    0x0000156a   0x0000156a   0x00000010   Code   RO         2556    i.tos_list_empty    tos_tick.o
+    0x0000157a   0x0000157a   0x00000006   Code   RO         2381    i.tos_list_init     tos_task.o
+    0x00001580   0x00001580   0x000000bc   Code   RO         1026    i.tos_mmheap_pool_add  tos_mmheap.o
+    0x0000163c   0x0000163c   0x0000016c   Code   RO         2382    i.tos_task_create   tos_task.o
+    0x000017a8   0x000017a8   0x00000098   Code   RO         2384    i.tos_task_delay    tos_task.o
+    0x00001840   0x00001840   0x00000060   Code   RO         2386    i.tos_task_destroy  tos_task.o
+    0x000018a0   0x000018a0   0x00000104   Code   RO         2388    i.tos_task_prio_change  tos_task.o
+    0x000019a4   0x000019a4   0x0000003c   Code   RO         2392    i.tos_task_yield    tos_task.o
+    0x000019e0   0x000019e0   0x00000008   Data   RO          874    .constdata          tos_global.o
+    0x000019e8   0x000019e8   0x00000020   Data   RO         3477    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x00001a08, Size: 0x00002f98, Max: 0x00020000, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x00001a08   0x00000004   Data   RW           15    .data               system_armcm4.o
+    0x20000004   0x00001a0c   0x00000004   PAD
+    0x20000008   0x00001a10   0x00000048   Data   RW          875    .data               tos_global.o
+    0x20000050   0x00001a58   0x00000004   Data   RW         3451    .data               mc_w.l(stdout.o)
+    0x20000054   0x00001a5c   0x00000004   PAD
+    0x20000058        -       0x000011d4   Zero   RW          873    .bss                tos_global.o
+    0x2000122c   0x00001a5c   0x00000004   PAD
+    0x20001230        -       0x000008f0   Zero   RW         3101    .bss                hello_world.o
+    0x20001b20        -       0x00001078   Zero   RW         3138    .bss                main.o
+    0x20002b98        -       0x00000400   Zero   RW            1    STACK               startup_armcm4.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+       180         74          0          0       2288       2194   hello_world.o
+       112         60          0          0       4216       1131   main.o
+       106          8          0          0          0      31861   port_c.o
+       192          8          0          0          0        428   port_s.o
+        56         10        960          0       1024       1196   startup_armcm4.o
+        32         18          0          4          0       6043   system_armcm4.o
+         0          0          0          0          0       1764   tos_bitmap.o
+       262         12          0          0          0      19750   tos_cpu.o
+         0          0          8         72       4564       1513   tos_global.o
+       674         22          0          0          0      11622   tos_mmheap.o
+        96          0          0          0          0      10152   tos_mutex.o
+       322          0          0          0          0      11843   tos_pend.o
+       478         36          0          0          0      13619   tos_sched.o
+       398         76          0          0          0       5745   tos_sys.o
+      1310         26          0          0          0      17186   tos_task.o
+       412         10          0          0          0      10235   tos_tick.o
+         4          0          0          0          0        477   tos_timer.o
+
+    ----------------------------------------------------------------------
+      4640        360       1000         80      12096     146759   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+         6          0          0          4          4          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+         0          0          0          0          0          0   entry.o
+         0          0          0          0          0          0   entry10a.o
+         0          0          0          0          0          0   entry11a.o
+         8          4          0          0          0          0   entry2.o
+         4          0          0          0          0          0   entry5.o
+         0          0          0          0          0          0   entry7b.o
+         0          0          0          0          0          0   entry8b.o
+         8          4          0          0          0          0   entry9a.o
+        18          0          0          0          0         80   fputc.o
+        30          0          0          0          0          0   handlers.o
+        36          8          0          0          0         68   init.o
+         0          0          0          0          0          0   iusesemip.o
+        30          0          0          0          0         68   llshl.o
+        32          0          0          0          0         68   llushr.o
+       736         56          0          0          0        184   printf5.o
+         0          0          0          0          0          0   semi.o
+         0          0          0          4          0          0   stdout.o
+        24          0          0          0          0         76   strncpy.o
+        98          0          0          0          0         92   uldiv.o
+
+    ----------------------------------------------------------------------
+      1024         72          0          4          4        636   Library Totals
+         0          0          0          0          4          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+      1024         72          0          4          0        636   mc_w.l
+
+    ----------------------------------------------------------------------
+      1024         72          0          4          4        636   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+      5664        432       1000         84      12100     142867   Grand Totals
+      5664        432       1000         84      12100     142867   ELF Image Totals
+      5664        432       1000         84          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                 6664 (   6.51kB)
+    Total RW  Size (RW Data + ZI Data)             12184 (  11.90kB)
+    Total ROM Size (Code + RO Data + RW Data)       6748 (   6.59kB)
+
+==============================================================================
+

@@ -314,7 +314,7 @@ completed sucessfully后就完成了软件报的创建。
 
 腾讯物联网操作系统（TencentOS
 tiny）是腾讯面向物联网领域开发的实时操作系统，具有低功耗，低资源占用，模块化，可裁剪等特性。TencentOS
-tiny 提供了最精简的 RTOS 内核，内核组件可裁剪可配置，可灵活移植到多种终端 MCU
+tiny提供了最精简的 RTOS 内核，内核组件可裁剪可配置，可灵活移植到多种终端 MCU
 上。而且，基于RTOS内核，提供了 COAP/MQTT/TLS/DTLS
 等常用物联网协议栈及组件，方便用户快速接入腾讯云物联网通信 IoT
 Hub。同时，TencentOS tiny
@@ -391,19 +391,22 @@ CMSIS-5.8.0软件包，以便在不同内核下测试本软件包。
 图3.1 ARM CMSIS-5.8.0软件包
 
 在安装完软件包后，以ARM
-Cortex-M3内核为例对软件包进行移植，并进行编译，首先利用Keil5软件新建工程，并选择ARMCM3，如图3.2所示，然后按照图3.3勾选相应的Tencentos-tiny组件和Cortex-M3内核文件，可以看到arch和tos_config都已经根据内核进行了自动适配。
+Cortex-M3内核为例对软件包进行移植，并进行编译，首先利用Keil5-5.30版本软件新建工程，并选择ARMCM3，如图3.2所示，然后按照图3.3勾选相应的Tencentos-tiny组件和Cortex-M3内核文件，可以看到arch和tos_config都已经根据内核进行了自动适配。
 
 ![](media/a644695d0639cedad43437d0daf55c84.png)
 
 图3.2勾选内核
 
-![](media/a5be36ddfee5a4297a9b7b37e03d805f.png)
+![](media/c2c150fdda4028d42c02b0c87b076491.png)
 
 图3.3勾选组件
 
-接下来点击Options for target，选中Use MicroLIB。
+接下来点击Options for target，选中Use MicroLIB和默认编译版本5，然后选择C99
+mode。
 
-![](media/1fc434bb69bf9d035167febe2555e5ea.png)
+![](media/def702786f5075f2264a31f5ac896499.png)
+
+![](media/d486810db3aa3845008f5a9a423c77ef.png)
 
 图3.4选中Use MicroLIB
 
@@ -415,7 +418,7 @@ Cortex-M3内核为例对软件包进行移植，并进行编译，首先利用Ke
 
 最后点击Build图标进行测试，如图3.6所示：
 
-![](media/6b80e31c45f91108877e2075bf37183e.png)
+![](media/589898df2b1bef2552e3d8ae3af98251.png)
 
 图3.6 编译测试
 
@@ -427,8 +430,8 @@ Cortex-M4内核下对本软件包进行测试，只需要在上述步骤修改mc
 
 接下来选取具体单片机芯片，进行软件包的测试，按照以下步骤：
 
-在网站[MDK5 Software Packs
-(keil.com)](https://www.keil.com/dd2/pack/#!#eula-container)上下载STM32F1的软件支持包，如图3.7所示，并进行安装。
+在网站MDK5 Software Packs
+(keil.com)上下载STM32F1的软件支持包，如图3.7所示，并进行安装。
 
 ![](media/d8af8e2edc40cc8ba9118bd25e011cd5.png)
 
@@ -436,19 +439,25 @@ Cortex-M4内核下对本软件包进行测试，只需要在上述步骤修改mc
 
 新建工程，选择芯片为STM32F103C8，如图3.8所示，然后点击ok，按照图3.9所示，选择Tencentos-tiny软件包的组件和STM32的启动文件。
 
-![](media/a88ab6c1753d1e29cf66f2c262db6e7d.png)
+![](media/0a73b53d3e30e784f48a79fd32c84e66.png)
 
 图3.8 选择STM32F103C8芯片
 
-![](media/cba8bfad31eb7bbf556effffc715e7a0.png)
+![](media/c7a5ff7ad00b13f1d0eee256c04ed9c1.png)
 
 图3.9 选择组件
 
-然后按照图3.10所示勾选Use MicroLIB。
+然后按照图3.10(a)所示勾选Use MicroLIB和编译版本5，并选择C99mode。
 
-![](media/d12f7bc705d06fe25ea4613ea0d3fd0c.png)
+![](media/d94f7b3f3d9ef7c172e4275703c6a878.png)
 
-图3.10 选择组件
+(a)
+
+![](media/ac7a5c0b6d4deb9b11d9b986f1c008d4.png)
+
+(b)
+
+图3.10 软件设置
 
 然后按照图3.11，在mcu_platform.h中添加以下头文件：
 
@@ -464,7 +473,7 @@ Cortex-M4内核下对本软件包进行测试，只需要在上述步骤修改mc
 
 最后点击Build编译，没有报错则移植成功。
 
-![](media/ec87e1dc531edb111161268ebb1eebf6.png)
+![](media/aee29502a5a59eedcc261bd130d55ef7.png)
 
 图3.12 编译界面
 
