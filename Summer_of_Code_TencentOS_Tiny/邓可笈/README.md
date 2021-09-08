@@ -141,7 +141,7 @@ uboot烧录操作如下：
 
 **测试结果**
 
-![mnist_test](/pic/mnist_test.png)
+![mnist_test](./pic/mnist_test.png)
 
 **2.移植一个可以在cortex-A上加速推理的库**（已完成ACL库的制作，但用makefile和OS链接还存在问题）
 
