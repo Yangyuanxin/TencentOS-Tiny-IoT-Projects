@@ -191,9 +191,7 @@ ARM-NN是一个知名的cortex-A的SDK，应用在很多安卓手机上，但与
 
 参考我放在仓库里的/back/makefile，可以实现C++的编译和静态库的链接，但是C对C++的链接似乎还有些问题待解决
 
-
-
-参考仓库：
+## 参考
 
 https://github.com/Tencent/TencentOS-tiny/tree/master/board/ALPHA_I.MX_emmc_256ddr
 
