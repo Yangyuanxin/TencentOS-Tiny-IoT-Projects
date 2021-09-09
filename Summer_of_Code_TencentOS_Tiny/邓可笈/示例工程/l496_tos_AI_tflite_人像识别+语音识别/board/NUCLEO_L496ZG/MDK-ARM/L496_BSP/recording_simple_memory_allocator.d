@@ -1,0 +1,34 @@
+l496_bsp/recording_simple_memory_allocator.o: \
+  tensorflow\lite\micro\recording_simple_memory_allocator.cc \
+  tensorflow\lite\micro\recording_simple_memory_allocator.h \
+  tensorflow\lite\micro\compatibility.h \
+  tensorflow\lite\micro\simple_memory_allocator.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\cstddef \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\__config \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\version \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\__nullptr \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\cstdint \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\stdint.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  tensorflow\lite\c\common.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\stdbool.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\stddef.h \
+  tensorflow\lite\core\api\error_reporter.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\cstdarg \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\new \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\exception \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\cstdlib \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\stdlib.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\math.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\math.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\type_traits \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\limits \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\__undef_macros \
+  tensorflow\lite\kernels\internal\compatibility.h \
+  tensorflow\lite\kernels\op_macros.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\libcxx\stdio.h \
+  D:\software\Keil\ARM\ARMCLANG\Bin\..\include\stdio.h

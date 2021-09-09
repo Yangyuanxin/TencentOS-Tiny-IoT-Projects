@@ -136,7 +136,7 @@ int js_usage(JS *);
 // 读取JS文件并执行
 jsval_t js_execute_script(JS *js, const char *filename); 
 // 初始化JS驱动(导入C函数)
-void js_driver_init(JS *js)；
+void js_driver_init(JS *js);
 ```
 
 ### 具体步骤

@@ -1,0 +1,1 @@
+2020.11.8 基于NUCLEO_L496ZG的TencentOS-tiny移植，其中：串口需要的uart.c（指定hlpuart1即stlink的串口），摄像头需要的dcmi.c以及i2c.c(指定i2c1)，LCD需要的spi.c（指定spi1）
