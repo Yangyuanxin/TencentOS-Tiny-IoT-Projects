@@ -69,12 +69,12 @@ TencentOS-Tiny software package based on MDK development
 [6.3
 MDK5.30和MDK5.35版本移植（Cortex-M0+、0、3、4、7内核和芯片）](#63-mdk530和mdk535版本移植cortex-m00347内核和芯片)
 
-[6.3
+[6.4
 MDK5.30和MDK5.35版本移植（Cortex-M23、33）](#63-mdk530和mdk535版本移植cortex-m2333)
 
-[6.3.1 Cortex-M23内核移植](#631-cortex-m23内核移植)
+[6.4.1 Cortex-M23内核移植](#631-cortex-m23内核移植)
 
-[6.3.2 Cortex-M33内核移植](#632-cortex-m33内核移植)
+[6.4.2 Cortex-M33内核移植](#632-cortex-m33内核移植)
 
 # 1、ARM软件包介绍
 
@@ -855,9 +855,9 @@ Pack时，对于Cortex-M0+、0、3、4、7的内核和芯片，勾选组件和�
 
 ![](media/f0e11c195cd20abdca5fd5a9dc85ac7c.png)
 
-## 6.3 MDK5.30和MDK5.35版本移植（Cortex-M23、33）
+## 6.4 MDK5.30和MDK5.35版本移植（Cortex-M23、33）
 
-### 6.3.1 Cortex-M23内核移植
+### 6.4.1 Cortex-M23内核移植
 
 （1）Manage Run-Time Environment勾选如下：
 
@@ -873,7 +873,7 @@ Pack时，对于Cortex-M0+、0、3、4、7的内核和芯片，勾选组件和�
 
 ![](media/3b90a1c32386f1e405dfa5f52a9b6a07.png)
 
-### 6.3.2 Cortex-M33内核移植
+### 6.4.2 Cortex-M33内核移植
 
 （1）选择带FPU的芯片
 
