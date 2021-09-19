@@ -1,0 +1,170 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.35.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Cui Linwei, southeast university, LIC=TA3AQ-74AP8-RFN0H-EEY3P-ZYPSU-1KV4X
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.35.0.2
+Toolchain Path:  D:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.35.0.2
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      UL2CM3.DLL V1.164.0.0
+Dialog DLL:      TCM.DLL V1.53.0.0
+ 
+<h2>Project:</h2>
+D:\CLW\tiny\Summer_of_Code_TencentOS_Tiny\´ÞÁÖÍþ\2¡¢TencentOS-tiny.1.0.0_Ó¢ÎÄ°æ\5¡¢MDK5.35 porting project\cortex_m4\cortex_m4.uvprojx
+Project File Date:  09/18/2021
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'Target 1'
+compiling tos_fault.c...
+compiling tos_cpu.c...
+compiling port_c.c...
+compiling tos_barrier.c...
+compiling tos_binary_heap.c...
+compiling tos_bitmap.c...
+compiling tos_char_fifo.c...
+compiling tos_completion.c...
+compiling tos_countdownlatch.c...
+compiling tos_event.c...
+compiling tos_global.c...
+compiling tos_mail_queue.c...
+compiling tos_message_queue.c...
+compiling tos_mmblk.c...
+compiling tos_mmheap.c...
+compiling tos_mutex.c...
+compiling tos_pend.c...
+compiling tos_priority_mail_queue.c...
+compiling tos_priority_message_queue.c...
+compiling tos_priority_queue.c...
+compiling tos_ring_queue.c...
+compiling tos_robin.c...
+compiling tos_rwlock.c...
+compiling tos_sched.c...
+compiling tos_sem.c...
+compiling tos_sys.c...
+compiling tos_stopwatch.c...
+compiling tos_task.c...
+compiling tos_time.c...
+compiling tos_tick.c...
+compiling tos_timer.c...
+compiling hello_world.c...
+compiling cmsis_os.c...
+compiling main.c...
+compiling mcu_it.c...
+linking...
+Program Size: Code=9448 RO-data=1012 RW-data=92 ZI-data=15524  
+".\Objects\cortex_m4.axf" - 0 Error(s), 0 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.8.0.pack
+                ARM.CMSIS.5.8.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.5.0
+   * Component: Startup Version: 1.2.2
+
+Package Vendor: Tencent
+                https://github.com/OpenAtomFoundation/TencentOS-tiny/Tencent.TencentOS-tiny.1.0.0.pack
+                Tencent.TencentOS-tiny.1.0.0
+                TencentOS tiny for external devices
+   * Component: arch Version: 1.0.0
+   * Component: cmsis_os Version: 1.0.0
+   * Component: helloworld_main Version: 1.0.0
+   * Component: mcu_it.c Version: 1.0.0
+   * Component: mcu_platform.h Version: 1.0.0
+   * Component: core Version: 1.0.0
+   * Component: hal Version: 1.0.0
+   * Component: tos_config Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\TencentOS_tiny
+  .\RTE\TencentOS_tiny\ARMCM4
+  .\RTE\_Target_1
+  D:\Keil_v5\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include
+  D:\Keil_v5\Packs\ARM\CMSIS\5.8.0\Device\ARM\ARMCM4\Include
+  D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\arch\arm\arm-v7m\common\include
+  D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\arch\arm\arm-v7m\cortex-m4\armcc
+  D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\core\include
+  D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\hal\include
+  D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\kernel\pm\include
+  D:\Keil_v5\Packs\Tencent\TencentOS-tiny\1.0.0\osal\cmsis_os
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.5.0
+
+   * Component: ARM::Device:Startup:1.2.2
+      Source file:   Device\ARM\ARMCM4\Source\ARM\startup_ARMCM4.s
+      Source file:   Device\ARM\ARMCM4\Source\system_ARMCM4.c
+
+   * Component: Tencent.MDK-ARM::TencentOS tiny:arch:arch:1.0.0
+      Source file:   arch\arm\arm-v7m\cortex-m4\armcc\port_s.S
+      Include file:  arch\arm\arm-v7m\cortex-m4\armcc\port.h
+      Include file:  arch\arm\arm-v7m\cortex-m4\armcc\port_config.h
+      Source file:   arch\arm\arm-v7m\common\tos_cpu.c
+      Source file:   arch\arm\arm-v7m\common\tos_fault.c
+      Source file:   arch\arm\arm-v7m\cortex-m4\armcc\port_c.c
+
+   * Component: Tencent.MDK-ARM::TencentOS tiny:cmsis_os:cmsis_os:1.0.0
+      Source file:   osal\cmsis_os\cmsis_os.c
+
+   * Component: Tencent.MDK-ARM::TencentOS tiny:example:helloworld_main:1.0.0
+      Source file:   examples\main.c
+      Source file:   examples\hello_world.c
+
+   * Component: Tencent.MDK-ARM::TencentOS tiny:example:mcu_it.c:1.0.0
+      Source file:   examples\mcu_it.c
+
+   * Component: Tencent.MDK-ARM::TencentOS tiny:example:mcu_platform.h:1.0.0
+      Include file:  examples\mcu_platform.h
+
+   * Component: Tencent.MDK-ARM::TencentOS tiny:kernel:core:1.0.0
+      Source file:   kernel\core\tos_char_fifo.c
+      Source file:   kernel\core\tos_barrier.c
+      Source file:   kernel\core\tos_countdownlatch.c
+      Source file:   kernel\core\tos_completion.c
+      Source file:   kernel\core\tos_binary_heap.c
+      Source file:   kernel\core\tos_bitmap.c
+      Source file:   kernel\core\tos_sched.c
+      Source file:   kernel\core\tos_ring_queue.c
+      Source file:   kernel\core\tos_mutex.c
+      Source file:   kernel\core\tos_sys.c
+      Source file:   kernel\core\tos_rwlock.c
+      Source file:   kernel\core\tos_pend.c
+      Source file:   kernel\core\tos_task.c
+      Source file:   kernel\core\tos_time.c
+      Source file:   kernel\core\tos_message_queue.c
+      Source file:   kernel\core\tos_event.c
+      Source file:   kernel\core\tos_mmblk.c
+      Source file:   kernel\core\tos_global.c
+      Source file:   kernel\core\tos_priority_mail_queue.c
+      Source file:   kernel\core\tos_priority_queue.c
+      Source file:   kernel\core\tos_stopwatch.c
+      Source file:   kernel\core\tos_mmheap.c
+      Source file:   kernel\core\tos_mail_queue.c
+      Source file:   kernel\core\tos_tick.c
+      Source file:   kernel\core\tos_priority_message_queue.c
+      Source file:   kernel\core\tos_robin.c
+      Source file:   kernel\core\tos_sem.c
+      Source file:   kernel\core\tos_timer.c
+
+   * Component: Tencent.MDK-ARM::TencentOS tiny:kernel:hal:1.0.0
+
+   * Component: Tencent.MDK-ARM::TencentOS tiny:kernel:tos_config:1.0.0
+      Include file:  kernel\tos_config\tos_config.h
+Build Time Elapsed:  00:00:07
+</pre>
+</body>
+</html>
