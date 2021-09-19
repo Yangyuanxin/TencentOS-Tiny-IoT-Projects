@@ -1,6 +1,0 @@
-CMSIS DSP_Lib example arm_class_marks_example
-
-The example is available for:
-  Cortex-M4
-
-The example is configured for Models Debugger
